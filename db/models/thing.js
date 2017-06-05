@@ -1,9 +1,13 @@
 'use strict'
 
-const {STRING} = require('sequelize')
+const {STRING, INTEGER, DECIMAL, JSON} = require('sequelize')
 
 module.exports = db => db.define('things', {
-  name: STRING,
+  title: STRING,
+  image: JSON,
+  description: STRING,
+  price: DECIMAL(10,2),
+  quantity: INTEGER,
 })
 
 module.exports.associations = (Thing, {User, Favorite}) => {
