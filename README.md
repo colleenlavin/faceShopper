@@ -101,4 +101,4 @@ have a linter someday soon.
 
 Afterwards,
   - *To deploy:* `npm run deploy-heroku`
-  - *To re-seed:* `heroku run npm run seed`
+  - *To re-seed:* `heroku run npm run seed`# faceShopper
