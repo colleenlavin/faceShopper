@@ -20,7 +20,7 @@ module.exports = db => db.define('orders', {
         where: {
           orderId: this.id
         }
-      }).then (items => {
+      }).then(items => {
         items.forEach(item => {
           subtotal += item.price * item.quantity
         })
