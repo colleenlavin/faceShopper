@@ -1,15 +1,19 @@
 'use strict'
 
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 
 module.exports = db => db.define('orders', {
-  //name: Sequelize.STRING,
-    status: {
-        type: Sequelize.STRING,
-        defaultValue: "Draft"
-    },
-    date: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
-    }
+  status: {
+    type: Sequelize.STRING,
+    defaultValue: 'Draft'
+  },
+  date: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
+  }
 })
+
+// figure this bit out later:
+// module.exports.associations = (Order, {User}) => {
+//   Order.belongsTo(User)
+// }
