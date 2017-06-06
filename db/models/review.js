@@ -17,3 +17,8 @@ module.exports = db => db.define('reviews', {
     validate: { min: 0, max: 5 }
   }
 })
+
+module.exports.associations = (Review, {User, Face}) => {
+  Review.belongsTo(User)
+  Review.belongsTo(Face)
+}

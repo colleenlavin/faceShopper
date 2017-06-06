@@ -28,7 +28,7 @@ module.exports = db => db.define('faces', {
   quantity: {
     type: INTEGER,
     allowNull: false,
-    validate: { min: 0, max: 5 }
+    validate: { min: 0 }
   }})
 
 // Reviews, and Orders
@@ -65,8 +65,9 @@ module.exports = db => db.define('faces', {
 //  foreignKey: 'FaceId'
 // })
 
-module.exports.associations = (Face, {Order, Review}) => {
-
+module.exports.associations = (Face, {Order, Review, OrderItem}) => {
+  Face.hasMany(Review)
+  Face.belongsToMany(Order, {as: 'purchase', through: OrderItem})
 }
 
 // module.exports.associations = (Thing, {User, Favorite}) => {
