@@ -1,6 +1,6 @@
 'use strict'
 
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 const OrderItem = require('./orderItem')
 
 module.exports = db => db.define('orders', {
@@ -15,17 +15,17 @@ module.exports = db => db.define('orders', {
 }, {
   instanceMethods: {
     getSubtotal: function() {
-      let subtotal = 0;
+      let subtotal = 0
       OrderItem.findAll({
         where: {
           orderId: this.id
         }
-      }).then ((items) => {
+      }).then (items => {
         items.forEach(item => {
           subtotal += item.price * item.quantity
         })
       })
-      return subtotal;
+      return subtotal
     }
   }
 })
