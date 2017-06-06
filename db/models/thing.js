@@ -6,7 +6,7 @@ module.exports = db => db.define('things', {
   title: STRING,
   image: JSON,
   description: STRING,
-  price: DECIMAL(10,2),
+  price: DECIMAL(10, 2),
   quantity: INTEGER,
 })
 
