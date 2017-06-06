@@ -11,7 +11,7 @@ module.exports = db => db.define('faces', {
 
   image: {
     type: JSON,
-    allowNull: false
+    allowNull: true
   },
 
   description: {
