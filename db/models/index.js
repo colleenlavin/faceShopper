@@ -16,7 +16,6 @@ const app = require('APP')
       OAuth: require('./oauth'),
       User: require('./user'),
       Face: require('./face'),
-      User: require('./user'),
       OrderItem: require('./orderItem'),
       Order: require('./order'),
       Review: require('./review')

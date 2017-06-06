@@ -2,9 +2,7 @@
 
 const Sequelize = require('sequelize')
 
-
 module.exports = db => db.define('orderItems', {
- 
   quantity: {
     type: Sequelize.INTEGER
   },
@@ -12,7 +10,6 @@ module.exports = db => db.define('orderItems', {
     type: Sequelize.FLOAT
   }
 })
-
 
 module.exports.associations = (OrderItem, {Order, Face}) => {
   OrderItem.belongsTo(Order)

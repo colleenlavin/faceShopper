@@ -18,7 +18,7 @@ module.exports = db => db.define('reviews', {
   }
 })
 
-module.exports.associations = (Review, {User,Face}) => {
+module.exports.associations = (Review, {User, Face}) => {
   Review.belongsTo(User)
   Review.belongsTo(Face)
 }
