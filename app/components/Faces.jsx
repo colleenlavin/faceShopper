@@ -1,8 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router'
 
-export default function FaceCatalog(props) {
+export default function Faces(props) {
   const faces = props.faces
+  // console.log('state', state)
+  // console.log('props', props)
+  console.log('faces,' , faces)
 
   return (
 		<div className='main-container'>
@@ -18,8 +21,9 @@ export default function FaceCatalog(props) {
 							<Link to={`/faces/${face.id}`}>
 								<img className='img-item' src={face.image} />
 								<h3>{face.title}</h3>
-								<h3>{face.price}</h3>
 							</Link>
+							<h3>{face.price}</h3>
+							<h4>{face.description}</h4>
 						</div>
 						))
 				}
