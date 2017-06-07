@@ -3,8 +3,8 @@ import {Link} from 'react-router'
 
 export default function Faces(props) {
   const faces = props.faces
-  console.log('state', state)
-  console.log('props', props)
+  // console.log('state', state)
+  // console.log('props', props)
   console.log('faces,' , faces)
 
   return (
@@ -16,14 +16,14 @@ export default function Faces(props) {
 			</div>
 			<div className='box'>
 				{
-					faces && faces.map(face => (
+					faces.data && faces.data.map(face => (
 						<div className='item' key={face.id}>
 							<Link to={`/faces/${face.id}`}>
 								<img className='img-item' src={face.image} />
 								<h3>{face.title}</h3>
-								<h3>{face.price}</h3>
-								<h4>{face.description}</h4>
 							</Link>
+							<h3>{face.price}</h3>
+							<h4>{face.description}</h4>
 						</div>
 						))
 				}
