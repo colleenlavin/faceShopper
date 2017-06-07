@@ -14,5 +14,5 @@ module.exports = require('express').Router()
   .get('/:id',
     (req, res, next) =>
       Face.findById(req.params.id)
-      .then(face => res.json(face))
+      .then(face => res.json(face)) // what about if face === undefined -- KHAM
       .catch(next))

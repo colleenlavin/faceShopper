@@ -27,8 +27,8 @@ const onAppEnter = () => {
 }
 
 const onFacesEnter = () => {
-  const faces = axios.get('/api/faces')
-  store.dispatch(receiveFaces(faces))
+  const faces = axios.get('/api/faces') // this is redundant to getFaces in reducers/faces -- KHAM
+  store.dispatch(receiveFaces(faces)) // use getFaces :D (I see onAppEnter might handle this) -- KHAM
 }
 
 const ExampleApp = connect(
@@ -44,7 +44,7 @@ const ExampleApp = connect(
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={ExampleApp}> {/* would expect onAppEnter here --  KHAM*/}
         <IndexRedirect to="/home" />
         <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
       </Route>

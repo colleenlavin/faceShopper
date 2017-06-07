@@ -5,8 +5,8 @@ const RECEIVE_FACES = 'RECEIVE_FACES'
 
 /*Reducer*/
 const initialFacesState ={
-  selected: {},
-  list: []
+  selected: {}, // selectedFace. self-documenting -- KHAM
+  list: [] // faceList
 }
 const reducer = (state=initialFacesState, action) => {
   const newState = Object.assign({}, state);
@@ -15,6 +15,7 @@ const reducer = (state=initialFacesState, action) => {
   case RECEIVE_FACES:
     newState.list = action.faces;
     break;
+    // default case -- KHAM
   }
   return newState
 }
@@ -28,6 +29,8 @@ export const getFaces = () => (
   dispatch =>
     axios.get('/api/faces')
       .then(faces => dispatch(receiveFaces(faces)))
+      // handle your errors
+      // console.log(error) --> showing the user the error. Look into growls if you feel like it. -- KHAM
    )
 
 

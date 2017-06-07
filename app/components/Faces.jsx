@@ -1,7 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router'
 
-export default function Faces(props) {
+// free bootstrap react templates +1 -- KHAM
+
+export default function Faces(props) { // destructure props here { faces } -- KHAM
   const faces = props.faces
   console.log('state', state)
   console.log('props', props)
