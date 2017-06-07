@@ -11,6 +11,25 @@ import Login from './components/Login'
 import Navbar from './components/Navbar'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
+import axios from 'axios'
+import getFaces from './reducers/faces'
+import FacesContainer from './containers/FacesContainer'
+
+const onAppEnter = () => {
+  //const pFaces = axios.get('/api/faces')
+  // const pUsers = axios.get('/api/users')
+  // return Promise.all([pFaces])
+  //   .then(responses => responses.map(r => r.data))
+  //   .then(([faces]) => {
+  //     store.dispatch(receiveFaces(faces));
+  //   })
+  store.dispatch(getFaces())
+}
+
+const onFacesEnter = () => {
+  const faces = axios.get('/api/faces')
+  store.dispatch(receiveFaces(faces))
+}
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -27,7 +46,7 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
-        <Route path="/home" component={Home} />
+        <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
