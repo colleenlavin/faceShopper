@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Link } from 'react-router'
+import Faces from './Faces'
 
 
 export default class Home extends Component {
@@ -13,7 +14,7 @@ export default class Home extends Component {
                 
                 <div className= "text">
                     <h1>Face Shopper</h1>
-                    
+                    <Faces />
                 </div>
 
             </div>

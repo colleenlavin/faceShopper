@@ -1,12 +1,18 @@
 import axios from 'axios'
 const RECEIVE_FACES = 'RECEIVE_FACES'
 
-const reducer = (state=null, action) => {
+const initialFacesState ={
+  selected: {},
+  list: []
+}
+const reducer = (state=initialFacesState, action) => {
+  const newState = Object.assign({}, state);
   switch (action.type) {
   case RECEIVE_FACES:
-    return action.faces
+    newState.list = action.faces;
+    break;
   }
-  return state
+  return newState
 }
 
 export const receiveFaces = faces => ({
