@@ -27,7 +27,7 @@ export const receiveFaces = faces => ({
 export const getFaces = () => (
   dispatch =>
     axios.get('/api/faces')
-      .then(faces => dispatch(receiveFaces(faces)))
+      .then(faces => dispatch(receiveFaces(faces.data)))
    )
 
 

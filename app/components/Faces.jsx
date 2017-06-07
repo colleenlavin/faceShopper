@@ -16,7 +16,7 @@ export default function Faces(props) {
 			</div>
 			<div className='box'>
 				{
-					faces.data && faces.data.map(face => (
+					faces && faces.map(face => (
 						<div className='item' key={face.id}>
 							<Link to={`/faces/${face.id}`}>
 								<img className='img-item' src={face.image} />
