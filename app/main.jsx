@@ -12,7 +12,7 @@ import Navbar from './components/Navbar'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 import axios from 'axios'
-import getFaces from './reducers/faces'
+import  {getFaces} from './reducers/faces'
 import FacesContainer from './containers/FacesContainer'
 
 const onAppEnter = () => {
