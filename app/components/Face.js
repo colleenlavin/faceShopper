@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-export default function Face(props) {
+export default function Face(props) { // destructure -- KHAM
     const face = props.selectedFace
 
     return (

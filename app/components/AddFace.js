@@ -1,11 +1,11 @@
 import React from 'react'
 import _ from 'lodash'
 
-export default function AddFace(props) {
+export default function AddFace(props) { // destructure props instead of (props) ==> ({handleChange, handleSubmit, selectedFace}) -- KHAM
 
     const handleChange = props.handleChange
     const handleSubmit = props.handleSubmit
-    const selectedFace = props.selectedFace
+    const selectedFace = props.selectedFace // don't forget to send me in or add to store or something -- KHAM
     const quantity = props.selectedFace.quantity
     const options = _.range(quantity + 1).toString()
 

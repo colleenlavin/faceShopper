@@ -25,14 +25,14 @@ export default class FaceContainer extends Component {
         evt.preventDefault()
         console.log("I've been submitted!")
         // add to cart here
-        this.setState({selectedQuantity : 0})
+        this.setState({selectedQuantity : 0}) // probably not just setting state -- KHAM
     }
 
     render() {
         return (
             <div>
            <Face/>
-           <AddFace handleChange={handleChange} handleSubmit={handleSubmit}/> 
+           <AddFace handleChange={handleChange} handleSubmit={handleSubmit}/> {/* this.handleChange, etc -- KHAM*/}
            </div>
         )
 }
