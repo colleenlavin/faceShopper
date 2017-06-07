@@ -6,7 +6,9 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 import Jokes from './components/Jokes'
+import Home from './components/Home'
 import Login from './components/Login'
+import Navbar from './components/Navbar'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 
@@ -15,9 +17,7 @@ const ExampleApp = connect(
 )(
   ({ user, children }) =>
     <div>
-      <nav>
-        {user ? <WhoAmI/> : <Login/>}
-      </nav>
+     <Navbar />
       {children}
     </div>
 )
@@ -26,8 +26,8 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
-        <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={Jokes} />
+        <IndexRedirect to="/home" />
+        <Route path="/home" component={Home} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
