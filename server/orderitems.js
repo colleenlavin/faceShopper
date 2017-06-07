@@ -12,15 +12,15 @@ module.exports = require('express').Router()
             .then(orderItems => res.json(orderItems))
             .catch(next))
 
-    .get('/:id',
+    .get('/:id', // same as orders with param -- KHAM
     (req, res, next) =>
         OrderItem.findById(req.params.id)
             .then(orderItem => res.json(orderItem))
             .catch(next))
 
-    .post('/', (req, res, next) => {
+    .post('/', (req, res, next) => { // I feel like that order.put could handle all orderItem posts
 
-        const findingFace = Face.findOne({
+        const findingFace = Face.findOne({ // findById -- KHAM
             where: {
                 id: req.body.faceId
             }
@@ -36,10 +36,10 @@ module.exports = require('express').Router()
 
         const creatingOrderItem = OrderItem.create(req.body)
 
-        Promise.all([findingUser, findingFace, creatingOrderItem])
+        Promise.all([findingUser, findingFace, creatingOrderItem]) // only works for authenticated users. Make sure I am only able to update my orderItems -- KHAM
             .then(([user, face, orderItem]) => {
                 orderItem.setFace(face)
-                if (user) orderItem.setUser(user) 
+                if (user) orderItem.setUser(user) // have conditional for user vs session and then this might be robust enough for all users -- KHAM
             })
             .then((orderItem) => res.json(orderItem)) 
             .catch(next)
