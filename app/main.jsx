@@ -8,6 +8,7 @@ import store from './store'
 import Jokes from './components/Jokes'
 import Home from './components/Home'
 import Login from './components/Login'
+import LoginPage from './components/LoginPage'
 import Navbar from './components/Navbar'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
@@ -48,6 +49,7 @@ render(
         <IndexRedirect to="/home" />
         <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces" component={FacesContainer} onEnter={onAppEnter} />
+        <Route path="/login" component={LoginPage} onEnter={onAppEnter} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
