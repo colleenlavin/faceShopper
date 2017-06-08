@@ -1,8 +1,11 @@
 import React, {Component} from 'react'
-import AddFace from './AddFace'
-import Face from './Face'
+import {connect} from 'react-redux'
+import AddFace from '../components/AddFace'
+import Face from '../components/Face'
 
-export default class FaceContainer extends Component {
+const mapStateToProps = (state) => ({face: state.faces.selected})
+
+class FaceContainer extends Component {
 
     constructor(props) {
         super(props)
@@ -31,10 +34,11 @@ export default class FaceContainer extends Component {
     render() {
         return (
             <div>
-           <Face/>
-           <AddFace handleChange={handleChange} handleSubmit={handleSubmit}/> 
-           </div>
+                <Face {...this.state} {...this.props} />
+                <AddFace {...this.state} {...this.props} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+            </div>
         )
-}
+    }
 }
 
+export default connect(mapStateToProps)(FaceContainer);

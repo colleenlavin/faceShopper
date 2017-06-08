@@ -2,13 +2,11 @@ import React from 'react'
 import _ from 'lodash'
 
 export default function AddFace(props) {
-
-    const handleChange = props.handleChange
-    const handleSubmit = props.handleSubmit
-    const selectedFace = props.selectedFace
-    const quantity = props.selectedFace.quantity
-    const options = _.range(quantity + 1).toString()
-
+    const handleChange = props.handleChange;
+    const handleSubmit = props.handleSubmit;
+    const selectedFace = props.face;
+    const quantity = selectedFace.quantity
+    const options = _.range(quantity + 1)
 
     return (
         <div className="form-container">
@@ -23,10 +21,10 @@ export default function AddFace(props) {
                             {options.map(opt => (
                                 <option key={opt} value={opt}>{opt}</option>
                             )) }
-                      </select>  
+                      </select>
                     </div>
             </form>
         </div>
     )
-    
+
 }

@@ -2,22 +2,22 @@ import React from 'react'
 import { Link } from 'react-router'
 
 export default function Face(props) {
-    const face = props.selectedFace
+    const selectedFace = props.face
 
     return (
         <div className='main-container'>
             <div className='title'>
                 <h2>
-                    {face.title}
+                    {selectedFace.title}
                 </h2>
             </div>
             <div>
-                <img className='img-item' src={face.image} />
+                <img className='img-item' src={selectedFace.image} />
             </div>
             <div>
-                <span>{face.description}</span>
-                <span>{face.price}</span>
-                <span>{face.quantity}</span>
+                <span>{selectedFace.description}</span>
+                <span>${selectedFace.price}</span>
+                <span>{selectedFace.quantity}</span>
             </div>
         </div>
     )
