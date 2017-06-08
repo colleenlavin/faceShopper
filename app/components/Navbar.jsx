@@ -13,7 +13,7 @@ export default function Navbar() {
                         <li><Link id="faces" to="/faces">Faces</Link></li>
                     </ul>
                     <div className="nav navbar-nav navbar-left">
-                        <Link id="login" to="/home">Login</Link>
+                        <Link id="login" to="/login">Login</Link>
                     </div>
                 </div>
             </div>

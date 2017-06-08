@@ -7,6 +7,7 @@ import {connect, Provider} from 'react-redux'
 import store from './store'
 import Home from './components/Home'
 import Login from './components/Login'
+import LoginPage from './components/LoginPage'
 import Navbar from './components/Navbar'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
@@ -50,6 +51,7 @@ render(
         <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
         <Route path="/faces" component={FacesContainer} onEnter={onAppEnter} />
+        <Route path="/login" component={LoginPage} onEnter={onAppEnter} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
