@@ -10,7 +10,7 @@ export default function Navbar() {
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav navbar-right">
                         <li><Link id="home" to="/home">Home</Link></li>
-                        <li>Faces</li>
+                        <li><Link id="home" to="/home">Faces</Link></li>
                     </ul>
                 </div>
             </div>

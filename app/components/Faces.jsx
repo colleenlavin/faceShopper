@@ -10,9 +10,9 @@ export default function Faces(props) {
   return (
 		<div className='main-container'>
 			<div className='title'>
-				<h2>
+				<h1 className='page-header'>
 					Face Wall
-				</h2>
+				</h1>
 			</div>
 			<div className='box'>
 				{
