@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+
 // ACTIONS:
 const RECEIVE_FACES = 'RECEIVE_FACES'
 const SELECT_FACE = 'SELECT_FACE'
@@ -46,7 +47,6 @@ export const deselectFace = () => ({
 })
 
 // DISPATCHERS:
-
 export const getFaces = () => (
   dispatch =>
     axios.get('/api/faces')
@@ -58,6 +58,5 @@ export const getFace = id => (
     axios.get(`/api/faces/${id}`)
       .then(face => dispatch(selectFace(face.data)))
    )
-
 
 export default reducer

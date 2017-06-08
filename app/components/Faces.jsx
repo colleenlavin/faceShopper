@@ -7,20 +7,23 @@ export default function Faces(props) {
   return (
 		<div className='main-container'>
 			<div className='title'>
-				<h2>
+
+				<h1 className='page-header'>
 					Face Wall
-				</h2>
+				</h1>
 			</div>
-			<div className='box'>
+			<div className="row" >
 				{
 					faces && faces.map(face => (
-						<div className='item' key={face.id}>
+						<div className="col-md-2 face-item" key={face.id}>
+
 							<Link to={`/faces/${face.id}`}>
 								<img className='img-item' src={face.image} />
 								<h3>{face.title}</h3>
 							</Link>
 							<h3>{face.price}</h3>
 							<h4>{face.description}</h4>
+							<button type="button" className="btn btn-danger">Add to Cart</button>
 						</div>
 						))
 				}
