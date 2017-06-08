@@ -9,8 +9,8 @@ export default class LoginPage extends Component {
     render() {
         return (
             <div className="container" >
-                <div classNames="omb_login">
-                    <h3 className="omb_authTitle">Login or </h3>
+                <div className="omb_login">
+                    <h3 className="omb_authTitle">Login </h3>
                     <div className="row omb_row-sm-offset-3 omb_socialButtons">
                         <div className="col-xs-4 col-sm-2">
                             <a href="#" className="btn btn-lg btn-block omb_btn-facebook">
@@ -33,9 +33,7 @@ export default class LoginPage extends Component {
                     </div>
                     <div className="row omb_row-sm-offset-3 omb_loginOr">
                         <div className="col-xs-12 col-sm-6">
-                            <hr className="omb_hrOr">
                                 <span className="omb_spanOr">or</span>
-                            </hr>
                         </div>
                     </div>
                     <div className="row omb_row-sm-offset-3">
