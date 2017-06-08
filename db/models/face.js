@@ -2,7 +2,7 @@
 
 const {STRING, INTEGER, DECIMAL, JSON, TEXT} = require('sequelize')
 
-module.exports = db => db.define('faces', {
+module.exports = db => db.define('face', {
   title: {
     type: STRING,
     allowNull: false,
@@ -65,10 +65,13 @@ module.exports = db => db.define('faces', {
 //  foreignKey: 'FaceId'
 // })
 
-module.exports.associations = (Face, {Order, Review, OrderItem}) => {
+module.exports.associations = (Face, {Order, Cart, Review, CartItem, OrderItem}) => {
   Face.hasMany(Review)
-  Face.belongsToMany(Order, {as: 'purchase', through: OrderItem})
+  Face.belongsToMany(Order, {as: 'face', through: OrderItem}) //from this I can say face include Order
+  Face.belongsToMany(Cart, {as: 'face', through: CartItem}) //from this I can say face include Cart
 }
+
+
 
 // module.exports.associations = (Thing, {User, Favorite}) => {
 //   Thing.belongsToMany(User, {as: 'lovers', through: Favorite})

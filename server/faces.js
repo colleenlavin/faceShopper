@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('APP/db')
-const Face = db.model('faces')
+const Face = db.model('face')
 
 
 module.exports = require('express').Router()

@@ -1,13 +1,8 @@
 'use strict'
 
 const Sequelize = require('sequelize')
-const OrderItem = require('./orderItem')
 
-module.exports = db => db.define('orders', {
-  status: {
-    type: Sequelize.STRING,
-    defaultValue: 'Draft'
-  },
+module.exports = db => db.define('order', {
   date: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW
@@ -30,7 +25,24 @@ module.exports = db => db.define('orders', {
   }
 })
 
-module.exports.associations = (Order, {User, OrderItem}) => {
+//  userSchema.beforeCreate(function (model) {
+//     debug('Info: ' + 'Storing the password');    
+//     model.generateHash(model.password, function (err, encrypted) {
+//       debug('Info: ' + 'getting ' + encrypted);
+
+//       model.password = encrypted;
+//       debug('Info: ' + 'password now is: ' + model.password);
+//       // done;
+//     });
+//   });
+// };
+
+module.exports.associations = (Order, {User, Face, OrderItem}) => {
   Order.belongsTo(User)
-  Order.hasMany(OrderItem)
+  Order.belongsToMany(Face, {through: OrderItem})
+  Order.hasMany(OrderItem) //still necessary?
 }
+
+
+
+
