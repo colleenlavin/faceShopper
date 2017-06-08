@@ -11,24 +11,6 @@ import Navbar from './components/Navbar'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 import axios from 'axios'
-import  {getFaces} from './reducers/faces'
-import FacesContainer from './containers/FacesContainer'
-
-const onAppEnter = () => {
-  //const pFaces = axios.get('/api/faces')
-  // const pUsers = axios.get('/api/users')
-  // return Promise.all([pFaces])
-  //   .then(responses => responses.map(r => r.data))
-  //   .then(([faces]) => {
-  //     store.dispatch(receiveFaces(faces));
-  //   })
-  store.dispatch(getFaces())
-}
-
-const onFacesEnter = () => {
-  const faces = axios.get('/api/faces')
-  store.dispatch(receiveFaces(faces))
-}
 
 import FaceContainer from './containers/FaceContainer'
 import FacesContainer from './containers/FacesContainer'
@@ -48,6 +30,11 @@ const ExampleApp = connect(
 
 const onAppEnter = () => {
   store.dispatch(getFaces())
+}
+
+const onFacesEnter = () => {
+  const faces = axios.get('/api/faces')
+  store.dispatch(receiveFaces(faces))
 }
 
 const onFaceEnter = function (nextRouterState) {
