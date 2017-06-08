@@ -10,8 +10,8 @@ const app = require('.')
     , dev = module.exports = () => run({
       server: task(app.package.scripts['start-watch'], {color: blue}),
       build: task(app.package.scripts['build-watch'], {color: green}),
-      lint: task(app.package.scripts['lint-watch'], {color: cyan}),
-      test: task(app.package.scripts['test-watch'], {color: yellow})
+      // lint: task(app.package.scripts['lint-watch'], {color: cyan}),
+      // test: task(app.package.scripts['test-watch'], {color: yellow})
     })
 
 const taskEnvironment = (path=require('path')) => {
@@ -24,6 +24,7 @@ const taskEnvironment = (path=require('path')) => {
     PATH: [ path.join(app.root, 'node_modules', '.bin')
           , process.env.PATH ].join(path.delimiter)
   })
+ 
   return env
 }
 

@@ -5,6 +5,14 @@ const passport = require('passport')
 const {User, OAuth} = require('APP/db')
 const auth = require('express').Router()
 
+console.log('faebookId', env.FACEBOOK_CLIENT_ID)
+console.log('googleId', env.GOOGLE_CLIENT_ID)
+console.log('github', env.GITHUB_CLIENT_ID)
+console.log('~~~~~', env.FACEBOOK_CLIENT_SECRET)
+console.log('~~~~~', env.GOOGLE_CLIENT_SECRET)
+console.log('~~~~~', env.GITHUB_CLIENT_SECRET)
+// const env = require('../.env.json')
+
 /*************************
  * Auth strategies
  *
