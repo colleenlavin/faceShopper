@@ -10,6 +10,8 @@ body {
 	font-size: 18px;
 	line-height: 25px;
     margin-left: 20px;
+    background-color: #F1F3CE;
+    color: #1E656D;
 }
 h1 {
   margin: .67em 0;
@@ -19,7 +21,7 @@ h1 {
   margin-left: 20px;
   text-align: center
 }
-.portfolio-item {
+.face-item {
     margin-bottom: 25px;
     margin-left: 20px;
     margin-right: 10px;
