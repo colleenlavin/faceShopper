@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
-// import Login from './Login'
+import Login from './Login'
 // import WhoAmI from './WhoAmI'
 
 export default function Navbar() {
@@ -12,6 +12,9 @@ export default function Navbar() {
                         <li><Link id="home" to="/home">Home</Link></li>
                         <li><Link id="home" to="/home">Faces</Link></li>
                     </ul>
+                    <div className="nav navbar-nav navbar-left">
+                        <Login />
+                    </div>
                 </div>
             </div>
         </nav>
