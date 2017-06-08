@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 export default function Navbar() {
     return (
-        <nav className="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <nav className="navbar navbar-inverse   navbar-fixed-top topnav " role="navigation">
             <div className="container topnav">
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav navbar-right">
@@ -15,6 +15,7 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
+       
     )
 }
 

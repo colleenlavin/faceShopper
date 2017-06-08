@@ -6,12 +6,31 @@
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    font-family: 'Cardo', Georgia, Times, serif;
+	font-size: 18px;
+	line-height: 25px;
+    margin-left: 20px;
 }
-
+h1 {
+  margin: .67em 0;
+  font-size: 3em;
+  font-family: 'Allan', Helvetica, Arial, sans-serif;
+  line-height: 75px;
+  margin-left: 20px;
+  text-align: center
+}
 .portfolio-item {
     margin-bottom: 25px;
+    margin-left: 20px;
+    margin-right: 10px;
+    color: #1E656D;
 }
 
 footer {
     margin: 50px 0;
+}
+.navbar-inverse {
+  background-color: #00293C;
+  border-color: #080808;
+  color: #1E656D;
 }
