@@ -6,7 +6,7 @@ module.exports = db => db.define('order', {
   date: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW
-  }
+  },
 }, {
   instanceMethods: {
     getSubtotal: function() {
