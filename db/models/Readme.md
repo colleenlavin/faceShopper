@@ -18,6 +18,26 @@ An unauthenticated client signs in and becomes an authenticated user.  The cart 
 
 An unathenticated or authenticated user hits the checkout button.  A new order must be created.  All cart items in the current cart must be bulk added to OrderItems, with the newly created order's id.  This is not yet implemented.  
 
+[
+ToDo List:
+
+1) Implement Express Sessions
+
+2) write VERB route for add to cart: have the session Id, find Or Create a cart (if unauthenticated) 
+
+3) (Low Priority) Take care of garbage collection of carts of expired guest sessions
+
+4) Either verify that beforeCreate user hook is working and user has cart OR in VERB route for add to cart take care of checking whether
+we're logged in and finding and creating user's cart
+
+5) Either verify that class methods are working and write verb Route for sign in that transfers cart OR if class methods aren't working
+duplicate logic in VERB route for sign in 
+
+6) Checkout: either write class method or write verb route for checkout that creates order bulk adding cart items to order items
+
+
+]
+
 
 
 
