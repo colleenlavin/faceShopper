@@ -10,7 +10,7 @@ module.exports = db => db.define('face', {
   },
 
   image: {
-    type: JSON,
+    type: STRING,
     allowNull: true
   },
 
@@ -30,7 +30,7 @@ module.exports = db => db.define('face', {
     allowNull: false,
     validate: { min: 0 }
   }})
-  
+
 module.exports.associations = (Face, {Order, Cart, Review, CartItem, OrderItem}) => {
   Face.hasMany(Review)
   Face.belongsToMany(Order, {as: 'face', through: OrderItem}) //from this I can say face include Order
