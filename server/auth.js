@@ -47,7 +47,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.FACEBOOK_CLIENT_ID,
     clientSecret: env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: `${app.baseUrl}/api/auth/login/facebook`,
+    callbackURL: `http://localhost:1337/api/auth/login/facebook`,
   },
   passport
 })
@@ -60,7 +60,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.GOOGLE_CLIENT_ID,
     clientSecret: env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `${app.baseUrl}/api/auth/login/google`,
+    callbackURL: `http://localhost:1337/api/auth/login/google`,
   },
   passport
 })
