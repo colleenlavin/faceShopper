@@ -2,7 +2,7 @@
 
 const {STRING, INTEGER, DECIMAL, JSON, TEXT} = require('sequelize')
 
-module.exports = db => db.define('reviews', {
+module.exports = db => db.define('review', {
   title: {
     type: STRING,
     len: [0, 100]

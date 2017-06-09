@@ -2,7 +2,7 @@
 
 const Sequelize = require('sequelize')
 
-module.exports = db => db.define('orderItems', {
+module.exports = db => db.define('orderItem', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -17,6 +17,13 @@ module.exports = db => db.define('orderItems', {
 })
 
 module.exports.associations = (OrderItem, {Order, Face}) => {
-  OrderItem.belongsTo(Order)
-  OrderItem.belongsTo(Face)
+  OrderItem.belongsTo(Order, {
+      foreignKey: { allowNull: false }
+  })
+  OrderItem.belongsTo(Face, {
+      foreignKey: { allowNull: false } 
+  })
 }
+
+
+

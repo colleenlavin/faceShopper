@@ -1,0 +1,67 @@
+
+
+
+
+orderItem can belong to Order and/or Cart. // At the time of purchase anyone's cart needs to be emptied.  
+
+//orderItem and cartItem need to be different tables. 
+
+Cart can belong to either User or Guest.  Same cart is always associated with guest session or 
+ I still have the question about exclusive or 
+
+ No I don't have this question anymore.  
+
+
+cartItems: 
+
+
+
+Are the current models ok?  OrderItem now has these foreign keys: cart_id, session
+
+Steps on Authentication: should any of these be 
+on authentication, 
+
+1) do we care about knowing user's session id
+
+2) classMethod on User: given user Id return cart_Id //put this route ?
+
+3) make this a class method on orderItem? or does this belong in the same authentication route?
+
+bulkUpdate:
+
+It can take two parameters: guestSession.cart_id and user.cart_id
+
+find every orderItem matching guestSession.cart_id
+    for every orderItem
+
+it overwrites the cart_id on orderItem with the User's cart_id
+
+4) then destroy the guestsession ???
+
+
+cart model --- user id sequelize association
+                    --- session id column
+
+unauthenticated --- put cart --> if first time initialize cart and since no req.user we add sessionId column
+
+unauthenticated, made cart, logging in -- always have a cart already
+    -- dispatch(login)
+    -- dispatch(switchCart('/api/cart'))
+            -- put cart
+                    -- Need to add existingUserCartId to unauthCartItems
+                        -- getUserCartId
+                        -- getUnauthCartId
+                        -- Need to delete unauthCart
+                        -- CartItem.migrate(Cart.getUnauthCart(req.session.id), Cart.getUserCartId(req.user.id))
+                                {
+                                CartItem.update({})
+                                .then(()=>{
+                                    return unAuthCart.destroy()
+                                })
+                                }
+                                -- CartItem has class method migrate
+                                -- Cart has class methods getUnauthCart, getUserCartId
+
+
+
+
