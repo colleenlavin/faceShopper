@@ -10,7 +10,7 @@ module.exports = db => db.define('face', {
   },
 
   image: {
-    type: JSON,
+    type: STRING,
     allowNull: true
   },
 

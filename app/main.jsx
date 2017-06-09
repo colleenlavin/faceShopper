@@ -11,8 +11,10 @@ import LoginPage from './components/LoginPage'
 import Navbar from './components/Navbar'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
+import Cart from './components/Cart'
 import axios from 'axios'
 
+import CartContainer from './containers/CartContainer'
 import FaceContainer from './containers/FaceContainer'
 import FacesContainer from './containers/FacesContainer'
 
@@ -33,11 +35,6 @@ const onAppEnter = () => {
   store.dispatch(getFaces())
 }
 
-const onFacesEnter = () => {
-  const faces = axios.get('/api/faces')
-  store.dispatch(receiveFaces(faces))
-}
-
 const onFaceEnter = function (nextRouterState) {
   const faceId = nextRouterState.params.faceId;
   store.dispatch(getFace(faceId))
@@ -51,6 +48,7 @@ render(
         <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
+        <Route path="/cart" component={CartContainer} onEnter={onAppEnter} />
         <Route path="/login" component={LoginPage} onEnter={onAppEnter} />
       </Route>
       <Route path='*' component={NotFound} />
