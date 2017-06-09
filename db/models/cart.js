@@ -28,15 +28,15 @@ module.exports = db => db.define('cart', {
   classMethods: {
       getUnAuthCartId: function(sessionId) {
         this.findOne({
-            where: {sessionId} //does this destructuring syntax work 
+            where: {sessionId} // does this destructuring syntax work?
         })
         .then( cart => {
             return cart.id
         })
       },
-      getUserCartId: function(userId) {    //Are these really two separate functions?  Could be DRYd out.
+      getUserCartId: function(userId) {    //Are these really two separate functions?  Could they be DRYd out?
         this.findOne({
-            where: {userId} //does this destructuring syntax work? 
+            where: {userId} // does this destructuring syntax work? 
         })
         .then( cart => {
             return cart.id
@@ -47,11 +47,11 @@ module.exports = db => db.define('cart', {
 
 module.exports.associations = (Cart, {User, Face, CartItem}) => {
   Cart.belongsTo(User)
-  Cart.belongsToMany(Face, {through: CartItem}) //suggested addition from Kate
+  Cart.belongsToMany(Face, {through: CartItem})
   Cart.hasMany(CartItem)
 
 
-  //Cart  belongs to many Face through CartItem <-- suggestion from Kate, makes this possible
-  //Cart.addFaces(we can send in an array of faces bulk associate all at once.  )
+  // Cart  belongs to many Face through CartItem <-- suggestion from Kate, makes this possible
+  // Cart.addFaces(we can send in an array of faces bulk associate all at once.  )
 }
 

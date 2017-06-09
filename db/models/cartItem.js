@@ -16,8 +16,8 @@ module.exports = db => db.define('cartItem', {
   }
 }, {
       classMethods: {
-          migrate(unAuthCartId, userCartId) {    //this can get called like so: CartItem.migrate(getUnAuthCartId(sessionId), getUserCartId(userId))
-              this.update(
+          migrate(unAuthCartId, userCartId) {    // this can get called like so: 
+              this.update(                         // CartItem.migrate(Cart.getUnAuthCartId(sessionId), Cart.getUserCartId(userId))
                   { cartId: userCartId },
                   { where: {cartId: unAuthCartId} })
           }
@@ -26,9 +26,9 @@ module.exports = db => db.define('cartItem', {
 
 module.exports.associations = (CartItem, {Cart, Face}) => {
   CartItem.belongsTo(Cart, {
-      foreignKey: { allowNull: false }, 
+      foreignKey: { allowNull: false }
   })
   CartItem.belongsTo(Face, {
-      foreignKey: { allowNull: false }, 
+      foreignKey: { allowNull: false } 
   })
 }

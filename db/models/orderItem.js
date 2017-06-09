@@ -16,9 +16,14 @@ module.exports = db => db.define('orderItem', {
   }
 })
 
-module.exports.associations = (OrderItem, {Order, Cart, Face}) => {
-  OrderItem.belongsTo(Order)
+module.exports.associations = (OrderItem, {Order, Face}) => {
+  OrderItem.belongsTo(Order, {
+      foreignKey: { allowNull: false }
+  })
   OrderItem.belongsTo(Face, {
-      foreignKey: { allowNull: false }, 
+      foreignKey: { allowNull: false } 
   })
 }
+
+
+

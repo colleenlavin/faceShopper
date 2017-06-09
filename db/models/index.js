@@ -23,6 +23,7 @@ const app = require('APP')
       Review: require('./review')
       // ---------- Add new models here ----------
     }
+
     , {mapValues} = require('lodash')
 
 module.exports = db => {
@@ -57,6 +58,11 @@ module.exports = db => {
         associations.call(metaModels[name], models[name], models)
       }
     })
-
+  
+  //hooks
+  models['User'].beforeCreate((user, options) => {
+        models['Cart'].create({user_id: user.id})
+    });
+  
   return models
 }
