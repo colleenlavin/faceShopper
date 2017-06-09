@@ -1,17 +1,12 @@
 'use strict'
 
 const Sequelize = require('sequelize')
-const OrderItem = require('./orderItem')
 
-module.exports = db => db.define('orders', {
-  status: {
-    type: Sequelize.STRING,
-    defaultValue: 'Draft'
-  },
+module.exports = db => db.define('order', {
   date: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW
-  }
+  },
 }, {
   instanceMethods: {
     getSubtotal: function() {
@@ -30,7 +25,12 @@ module.exports = db => db.define('orders', {
   }
 })
 
-module.exports.associations = (Order, {User, OrderItem}) => {
+module.exports.associations = (Order, {User, Face, OrderItem}) => {
   Order.belongsTo(User)
-  Order.hasMany(OrderItem)
+  Order.belongsToMany(Face, {through: OrderItem})
+  Order.hasMany(OrderItem) //still necessary?
 }
+
+
+
+

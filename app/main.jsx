@@ -49,8 +49,8 @@ render(
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
-        <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
         <Route path="/faces" component={FacesContainer} onEnter={onAppEnter} />
+        <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
         <Route path="/login" component={LoginPage} onEnter={onAppEnter} />
       </Route>
       <Route path='*' component={NotFound} />

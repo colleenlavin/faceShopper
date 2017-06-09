@@ -4,7 +4,7 @@
 const bcrypt = require('bcryptjs')
     , {STRING, VIRTUAL} = require('sequelize')
 
-module.exports = db => db.define('users', {
+module.exports = db => db.define('user', {
   name: STRING,
   email: {
     type: STRING,
@@ -13,6 +13,7 @@ module.exports = db => db.define('users', {
       notEmpty: true
     }
   },
+  currSessId: STRING, // do we want this -- KS ?
 
   // We support oauth, so users may or may not have passwords.
   password_digest: STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks
@@ -32,17 +33,19 @@ module.exports = db => db.define('users', {
       return bcrypt.compare(plaintext, this.password_digest)
     }
   }
-})
+  // , 
+  //   hooks: {
+  //     beforeCreate: (user, options) => { // is this necessary -- KS ?
+  //       Cart.create({userId: user.id})
+  //     }
+  //   }
+  })
 
-// module.exports.associations = (User, {OAuth, Thing, Favorite}) => {
-//   User.hasOne(OAuth)
-//   User.belongsToMany(Thing, {as: 'favorites', through: Favorite})
-// }
-
-module.exports.associations = (User, {OAuth, Order, Review}) => {
+module.exports.associations = (User, {OAuth, Order, Review, Cart}) => {
   User.hasOne(OAuth)
   User.hasMany(Review)
   User.hasMany(Order)
+  User.hasOne(Cart)
 }
 
 function setEmailAndPassword(user) {
