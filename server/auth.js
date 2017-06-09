@@ -73,7 +73,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.GITHUB_CLIENT_ID,
     clientSecret: env.GITHUB_CLIENT_SECRET,
-    callbackURL: `${app.baseUrl}/api/auth/login/github`,
+    callbackURL: `http://localhost:1337/api/auth/login/github`,
   },
   passport
 })
