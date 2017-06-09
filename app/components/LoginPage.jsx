@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import axios from 'axios'
 import store from '../store'
 import { Link } from 'react-router'
@@ -13,21 +14,21 @@ export default class LoginPage extends Component {
                     <h3 className="omb_authTitle">Login </h3>
                     <div className="row omb_row-sm-offset-3 omb_socialButtons">
                         <div className="col-xs-4 col-sm-2">
-                            <a href="#" className="btn btn-lg btn-block omb_btn-facebook">
+                            <a href="/api/auth/login/facebook" className="btn btn-lg btn-block omb_btn-facebook">
                                 <i className="fa fa-facebook visible-xs"></i>
                                 <span className="hidden-xs">Facebook</span>
                             </a>
                         </div>
                         <div className="col-xs-4 col-sm-2">
-                            <a href="#" className="btn btn-lg btn-block omb_btn-twitter">
-                                <i className="fa fa-twitter visible-xs"></i>
-                                <span className="hidden-xs">Twitter</span>
+                            <a href="/api/auth/login/github" className="btn btn-lg btn-block omb_btn-twitter">
+                                <i className="fa fa-github visible-xs"></i>
+                                <span className="hidden-xs">Github</span>
                             </a>
                         </div>
                         <div className="col-xs-4 col-sm-2">
-                            <a href="#" className="btn btn-lg btn-block omb_btn-google">
-                                <i className="fa fa-google-plus visible-xs"></i>
-                                <span className="hidden-xs">Google+</span>
+                            <a href="/api/auth/login/google" className="btn btn-lg btn-block omb_btn-google">
+                                <i className="fa fa-google visible-xs"></i>
+                                <span className="hidden-xs">Google</span>
                             </a>
                         </div>
                     </div>
