@@ -2,6 +2,7 @@
 
 const path = require('path')
 const express = require('express')
+const session = require('express-session');
 const bodyParser = require('body-parser')
 const {resolve} = require('path')
 const passport = require('passport')
@@ -35,12 +36,6 @@ prettyError.skipNodeFiles()
 prettyError.skipPackage('express')
 
 module.exports = app
-  // Session middleware - compared to express-session (which is what's used in the Auther workshop), cookie-session stores sessions in a cookie, rather than some other type of session store.
-  // Cookie-session docs: https://www.npmjs.com/package/cookie-session
-  .use(require('cookie-session')({
-    name: 'session',
-    keys: [process.env.SESSION_SECRET || 'an insecure secret key'],
-  }))
 
   // Body parsing middleware
   .use(bodyParser.urlencoded({ extended: true }))
@@ -55,6 +50,13 @@ module.exports = app
 
   // Serve our api - ./api also requires in ../db, which syncs with our database
   .use('/api', require('./api'))
+
+  // Set up session:
+  .use(session({
+    secret: 'timeforfaces',
+    resave: false,
+    saveUninitialized: false
+  }))
 
   // any requests with an extension (.js, .css, etc.) turn into 404
   .use((req, res, next) => {
