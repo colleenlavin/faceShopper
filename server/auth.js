@@ -5,6 +5,14 @@ const passport = require('passport')
 const {User, OAuth} = require('APP/db')
 const auth = require('express').Router()
 
+console.log('faebookId', env.FACEBOOK_CLIENT_ID)
+console.log('googleId', env.GOOGLE_CLIENT_ID)
+console.log('github', env.GITHUB_CLIENT_ID)
+console.log('~~~~~', env.FACEBOOK_CLIENT_SECRET)
+console.log('~~~~~', env.GOOGLE_CLIENT_SECRET)
+console.log('~~~~~', env.GITHUB_CLIENT_SECRET)
+// const env = require('../.env.json')
+
 /*************************
  * Auth strategies
  *
@@ -39,7 +47,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.FACEBOOK_CLIENT_ID,
     clientSecret: env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: `${app.baseUrl}/api/auth/login/facebook`,
+    callbackURL: `http://localhost:1337/api/auth/login/facebook`,
   },
   passport
 })
@@ -52,7 +60,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.GOOGLE_CLIENT_ID,
     clientSecret: env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `${app.baseUrl}/api/auth/login/google`,
+    callbackURL: `http://localhost:1337/api/auth/login/google`,
   },
   passport
 })
@@ -65,7 +73,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.GITHUB_CLIENT_ID,
     clientSecret: env.GITHUB_CLIENT_SECRET,
-    callbackURL: `${app.baseUrl}/api/auth/login/github`,
+    callbackURL: `http://localhost:1337/api/auth/login/github`,
   },
   passport
 })
