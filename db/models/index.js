@@ -16,11 +16,14 @@ const app = require('APP')
       OAuth: require('./oauth'),
       User: require('./user'),
       Face: require('./face'),
+      Cart: require('./cart'),
+      CartItem: require('./cartItem'),
       OrderItem: require('./orderItem'),
       Order: require('./order'),
       Review: require('./review')
       // ---------- Add new models here ----------
     }
+
     , {mapValues} = require('lodash')
 
 module.exports = db => {
@@ -55,6 +58,11 @@ module.exports = db => {
         associations.call(metaModels[name], models[name], models)
       }
     })
-
+  
+  //hooks
+  models['User'].beforeCreate((user, options) => {
+        models['Cart'].create({user_id: user.id})
+    });
+  
   return models
 }
