@@ -18,11 +18,10 @@ export default function Faces(props) {
 						<div className="col-md-2 face-item" key={face.id}>
 
 							<Link to={`/faces/${face.id}`}>
-								<img className='img-item' src={face.image} />
 								<h3>{face.title}</h3>
+								<img className='img-item' src={face.image} />
 							</Link>
 							<h3>{face.price}</h3>
-							<h4>{face.description}</h4>
 							<button type="button" className="btn btn-danger">Add to Cart</button>
 						</div>
 						))
