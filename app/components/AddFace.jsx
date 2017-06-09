@@ -11,7 +11,7 @@ export default function AddFace(props) {
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit}>
-                <legend>Add to cart</legend>
+                <legend>Select a quantity:</legend>
                 <div>
                     <select
                         className="form-control"
@@ -21,8 +21,9 @@ export default function AddFace(props) {
                             {options.map(opt => (
                                 <option key={opt} value={opt}>{opt}</option>
                             )) }
-                      </select>
-                    </div>
+                    </select>
+                </div>
+                <button type="submit" className="btn btn-danger">Add to Cart</button>
             </form>
         </div>
     )
