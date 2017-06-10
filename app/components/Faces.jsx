@@ -15,7 +15,7 @@ export default function Faces(props) {
 			<div className="row" >
 				{
 					faces && faces.map(face => (
-						<div className="col-md-2 face-item" key={face.id}>
+						<div className="col-md-3 face-item" key={face.id}>
 
 							<Link to={`/faces/${face.id}`}>
 								<h3>{face.title}</h3>
