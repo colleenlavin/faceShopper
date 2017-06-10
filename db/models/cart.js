@@ -42,6 +42,13 @@ module.exports = db => db.define('cart', {
             return cart.id
         })
       }
+  },
+  scopes: {
+    populated: () => ({
+      include: [{
+        model: db.model('cartItem')
+      }]
+    })
   }
 })
 

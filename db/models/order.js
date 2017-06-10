@@ -2,6 +2,7 @@
 
 const Sequelize = require('sequelize')
 
+
 module.exports = db => db.define('order', {
   date: {
     type: Sequelize.DATE,
@@ -22,6 +23,13 @@ module.exports = db => db.define('order', {
       })
       return subtotal
     }
+  },
+  scopes: {
+    populated: () => ({
+      include: [{
+        model: db.model('orderItem')
+      }]
+    })
   }
 })
 
