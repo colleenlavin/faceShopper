@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Cart from '../components/Cart'
 import store from '../store'
+import { updateCartItem } from '../reducers'
 
 
 const mapStateToProps = (state) => ({ cart: state.cart })
@@ -29,7 +30,7 @@ class CartContainer extends Component {
             //dispatch an action 
             //this is actually a redux operation in which
             //we update the relevant cart item. 
-        dispatch()    
+        dispatch(updateCartItem(item, quant))    
         
         console.log('event', evt.target)
     }
