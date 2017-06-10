@@ -15,7 +15,10 @@ const initialCartState = {
 
 const reducer = (state=initialCartState, action) => {
   const newState = Object.assign({}, state);
- 
+  const cart = store.getState().cart
+  const old = cart.filter(item=>item.id==action.cartItem.id)[0]
+  const idx = cart.indexOf(old)
+
   switch (action.type) {
 
     case ADD_CART_ITEM:
@@ -23,14 +26,13 @@ const reducer = (state=initialCartState, action) => {
       break;
 
     case UPDATE_CART_ITEM:
-      let oldCartItem = store.getState().cart.filter(cartItem => cartItem.id == action.cartItem.id)[0]
-      let idx = store.getState().campuses.indexOf(oldCartItem)
       update(state,
-        { campuses: { $splice: [[idx, 1]], $push: [action.campus] } })  
+        { cart: { $splice: [[idx, 1]], $push: [action.cartItem] } })  
       break;
 
     case REMOVE_CART_ITEM:
-      newState.selectedFace = action.selectedFace;
+      update(state,
+        { cart: { $splice: [[idx, 1]] } })  
       break;
 
   }
@@ -58,7 +60,7 @@ export const postCartItem = (cartItem) => (
       .then(faces => dispatch(receiveFaces(faces.data)))
    )
 
-export const updateCartItem = id => (
+export const updateCartItem = (user_id) => (
   dispatch =>
     axios.get(`/api/faces/${id}`)
       .then(face => dispatch(selectFace(face.data)))
