@@ -14,7 +14,7 @@ module.exports = require('express').Router()
       })
     .catch(next))
 
-  .param('cartItem', (req, res, next, cartItemId) => {
+  .param('cartItemId', (req, res, next, cartItemId) => {
     CartItem.findOrCreate( {where: {id:cartItemId}})
     .spread((cartItem, created) => {
       req.cartItem = cartItem
@@ -32,10 +32,14 @@ module.exports = require('express').Router()
       res.json(req.requestedCart)
     .catch(next))
 
-  .put('/:sessionId/:cartItem')
+  .put('/:sessionId/:cartItemId', (req, res, next) => 
+      req.cartItem.update({quantity: req.body.quantity})
+      .then((cartItem) => res.json(cartItem))
+      .catch(next)
 
-
-
+  .post('/:sessionId/:cartItemId', (req, res, next) => 
+      req.cartItem => res.json(cartItem))
+      .catch(next)
 
   // .get('/:sessionId/subtotal', 
   // (req, res, next) =>

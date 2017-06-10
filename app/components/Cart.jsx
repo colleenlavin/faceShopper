@@ -39,7 +39,7 @@ export default function Cart({cart, removeItem, handleChange, handleSubmit}) {
                     <select
                       className="quantity"
                       value={item.quantity}
-                      onChange={(evt) => {handleChange(evt.target.value, item)}} >
+                      onChange={(evt) => {handleChange(item, evt.target.value)}} >
                       {options.map(opt => (
                         <option key={opt} value={opt}>{opt}</option>
                       ))}

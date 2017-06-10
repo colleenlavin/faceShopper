@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Cart from '../components/Cart'
-import store from '../store'
 import { updateCartItem } from '../reducers'
 
 
-const mapStateToProps = (state) => ({ cart: state.cart })
+const mapStateToProps = (state) => ({ cart: state.cart, userId: state.userId, 
+    sessionId:state.sessionId })
 
 class CartContainer extends Component {
     constructor(props) {
@@ -26,15 +26,14 @@ class CartContainer extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-    handleChange(quant, item) {
-            //dispatch an action 
-            //this is actually a redux operation in which
-            //we update the relevant cart item. 
-        dispatch(updateCartItem(item, quant))    
-        
-        console.log('event', evt.target)
+    handleChange(item, quant) {
+        dispatch(updateCartItem(props.userId, props.sessionId, item, quant))    //userId should come from state, be truthy if user_id exists, else falsy
     }
-    handleSubmit() { }
+
+    handleSubmit(event) { 
+        cart = this.state.cart
+        //call a dispatcher that creates an order with the current cart
+    }
 
     render() {
         return (
