@@ -7,7 +7,7 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/faces', require('./faces'))
-  .use('/carts', require('./carts'))
+  //.use('/carts', require('./carts'))
 
 // No routes matched? 404.
 api.use((req, res) => res.status(404).end())
