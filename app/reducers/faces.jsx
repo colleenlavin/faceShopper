@@ -34,11 +34,11 @@ const reducer = (state=initialFacesState, action) => {
 
 // ACTION CREATORS:
 export const receiveFaces = faces => ({
-  type: RECEIVE_FACES, faces
+  type: RECEIVE_FACES, list
 })
 
 export const selectFace = selectedFace => ({
-  type: SELECT_FACE, selectedFace
+  type: SELECT_FACE, selected
 })
 
 export const deselectFace = () => ({

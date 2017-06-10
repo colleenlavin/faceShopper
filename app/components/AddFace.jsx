@@ -8,7 +8,7 @@ export default function AddFace({handleChange, handleSubmit, selectedFace }) {
 
     return (
         <div className="form-container">
-            <form onSubmit={(evt) => {handleSubmit(selectedFace, evt)}>
+            <form onSubmit={(evt) => {handleSubmit(selectedFace, evt)}}>
                 <legend>Select a quantity:</legend>
                 <div>
                     <select
@@ -25,5 +25,4 @@ export default function AddFace({handleChange, handleSubmit, selectedFace }) {
             </form>
         </div>
     )
-
 }

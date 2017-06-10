@@ -9,7 +9,7 @@ const passport = require('passport')
 const PrettyError = require('pretty-error')
 const finalHandler = require('finalhandler')
 
-require('../secrets')
+//require('../secrets') //this throws an error - KS
 // PrettyError docs: https://www.npmjs.com/package/pretty-error
 
 // Bones has a symlink from node_modules/APP to the root of the app.

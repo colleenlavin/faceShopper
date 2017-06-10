@@ -55,14 +55,14 @@ export const removeCartItem = () => ({
 //ASYNC ACTION CREATORS
 
 export const postCartItem = (userId, sessionId, cartItem, quantity) => (
-  dispatch =>
+  dispatch => {
     let route
     userId ? route = '' : route = `/api/unAuthCarts/${sessionId}` //need to figure this out if we're logged in
     axios.post(route, {cartItem})
       .then(res => res.data)
       .then(cartItem => dispatch(addCartItem(cartItem)))
       .catch(err => console.log(err)) //how are we supposed to handle errors here?
-)
+  })
 
 export const updateCartItem = (userId, sessionId, cartItem, quantity) => (
   dispatch => {
@@ -71,4 +71,5 @@ export const updateCartItem = (userId, sessionId, cartItem, quantity) => (
     axios.put(route, { quantity })
       .then(res => res.data)
       .then(cartItem => dispatch(changeCartItem(cartItem)))
+      .catch(err => console.log(err))
   })

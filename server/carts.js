@@ -1,38 +1,38 @@
-'use strict'
+// 'use strict'
 
-const db = require('APP/db')
-const Cart = db.model('cart')
-const CartItem = db.model('cartItem')
+// const db = require('APP/db')
+// const Cart = db.model('cart')
+// const CartItem = db.model('cartItem')
 
-module.exports = require('express').Router()
+// module.exports = require('express').Router()
 
- .param('sessionId', (req, res, next, sessionId) => 
-    Cart.scope('populated')
-    .findOrCreate({where: {sessionId: req.params.sessionId}})
-    .spread((cart, created) => {
-      req.cart = cart
-      })
-    .catch(next))
+//  .param('sessionId', (req, res, next, sessionId) => 
+//     Cart.scope('populated')
+//     .findOrCreate({where: {sessionId: req.params.sessionId}})
+//     .spread((cart, created) => {
+//       req.cart = cart
+//       })
+//     .catch(next))
 
-  .param('cartItem', (req, res, next, cartItemId) => {
-    CartItem.findOrCreate( {where: {id:cartItemId}})
-    .spread((cartItem, created) => {
-      req.cartItem = cartItem
-    })
-    .catch(next)
-  })
+//   .param('cartItem', (req, res, next, cartItemId) => {
+//     CartItem.findOrCreate( {where: {id:cartItemId}})
+//     .spread((cartItem, created) => {
+//       req.cartItem = cartItem
+//     })
+//     .catch(next)
+//   })
 
 
-  .get('/:sessionId', 
-    (req, res, next) =>
-    res.json(req.cart)
-    .catch(next))
+//   .get('/:sessionId', 
+//     (req, res, next) =>
+//     res.json(req.cart)
+//     .catch(next))
 
-  .get('/:sessionId', (req, res, next) =>
-      res.json(req.requestedCart)
-    .catch(next))
+//   .get('/:sessionId', (req, res, next) =>
+//       res.json(req.requestedCart)
+//     .catch(next))
 
-  .put('/:sessionId/:cartItem')
+//   .put('/:sessionId/:cartItem')
 
 
 
