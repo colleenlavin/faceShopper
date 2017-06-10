@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
 import Login from './Login'
+
 // import WhoAmI from './WhoAmI'
 
 export default function Navbar() {
@@ -11,6 +12,7 @@ export default function Navbar() {
                     <ul className="nav navbar-nav navbar-right">
                         <li><Link id="home" to="/home">Home</Link></li>
                         <li><Link id="faces" to="/faces">Faces</Link></li>
+                        <li><Link id="cart" to="/cart">Cart</Link></li>
                     </ul>
                     <div className="nav navbar-nav navbar-left">
                         <Link id="login" to="/login">Login</Link>
