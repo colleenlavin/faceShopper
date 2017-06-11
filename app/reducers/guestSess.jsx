@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 const GUEST = 'GUEST'
 
 const initialState = {
@@ -14,7 +13,6 @@ const reducer = (state=initialState, action) => {
   }
   return state
 }
-
 
 export const setSession = sessionId => {
   return {type: GUEST, sessionId}

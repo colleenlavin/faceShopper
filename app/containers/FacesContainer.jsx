@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import Faces from '../components/Faces'
 import { postCartItem } from '../reducers/cartItems'
 
-const mapStateToProps = (state) => ({faces: state.faces.list, userId: state.userId, 
+const mapStateToProps = (state) => ({faces: state.faces.list, user: state.auth, 
   sessionId: state.sessionId})
 const mapDispatchToProps = (dispatch) => {
   return {

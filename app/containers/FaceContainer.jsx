@@ -12,11 +12,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleSubmit:
         (user, sessionId, face, quantity, evt) => {
-            console.log("user is ", user)
-            console.log("session id is ", sessionId)
-            console.log("face.id is ", face.id)
-            console.log("quantity is ", quantity)
-            dispatch(postCartItem(user, sessionId, face.id, quantity))
+            dispatch(postCartItem(user, sessionId, face, quantity))
             // FaceConter.setState({ selectedQuantity: 1 }) // how do we do this?
             evt.preventDefault()
         }

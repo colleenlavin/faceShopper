@@ -8,6 +8,7 @@ const {resolve} = require('path')
 const passport = require('passport')
 const PrettyError = require('pretty-error')
 const finalHandler = require('finalhandler')
+var nocache = require('nocache')
 
 //require('../secrets') //this throws an error - KS
 // PrettyError docs: https://www.npmjs.com/package/pretty-error
@@ -40,6 +41,8 @@ module.exports = app
   // Body parsing middleware
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
+
+  app.use(nocache())
 
    // Set up session:
   .use(session({

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import update from 'immutability-helper';
 import store from '../store'
-console.log("store is ", store)
 
 //CONSTANTS
 
@@ -17,10 +16,15 @@ const initialCartState = {
 
 const reducer = (state = initialCartState, action) => {
   const newState = Object.assign({}, state);
+
+  // This logic to identify the index of a member of an array isn't working because
+  // store keeps being undefined.  I'm not sure why.  How did you all handle updating an array
+  // in your senior enrichment projects?
   // const cart = store.getState().cart
   // const old = cart.filter(item => item.id == action.cartItem.id)[0]
   // const idx = cart.indexOf(old)
   let idx = 1
+
   switch (action.type) {
 
     case ADD_CART_ITEM:
@@ -28,12 +32,11 @@ const reducer = (state = initialCartState, action) => {
       break;
 
     case CHANGE_CART_ITEM:
-      update(state,
-        { cart: { $splice: [[idx, 1]], $push: [action.cartItem] } })
+      newState.cart = update(state, { cart: { $splice: [[idx, 1]], $push: [action.cartItem] } })
       break;
 
     case REMOVE_CART_ITEM:
-      update(state,
+      newState.cart = update(state,
         { cart: { $splice: [[idx, 1]] } })
       break;
 
@@ -56,17 +59,18 @@ export const removeCartItem = () => ({
 
 //ASYNC ACTION CREATORS
 
-export const postCartItem = (userId, sessionId, faceId, quantity=1) => (
+export const postCartItem = (userId, sessionId, face, quantity=1) => (
   dispatch => {
     let route
     userId ? route = '' : route = `/api/carts/${sessionId}` //need to figure out route if we're logged in
-    axios.post(route, {faceId: faceId})
+    axios.post(route, {face})
       .then(
-        res => {
-          console.log("res.data ", res.data)
-          return res.data}
-        )
-      .then(cartItem => dispatch(addCartItem(cartItem)))
+        res => {return res.data
+        })
+      .then(cartItem => {
+        cartItem.face = face
+        dispatch(addCartItem(cartItem))
+      })
       .catch(err => console.log(err)) //how are we supposed to handle errors here?
   })
 

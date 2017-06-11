@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-export default function AddFace({handleChange, handleSubmit, 
+export default function AddFace({ handleChange, handleSubmit,
     face, user, sessionId, selectedQuantity }) {
 
     const quantityOnHand = face.quantity
@@ -10,11 +10,8 @@ export default function AddFace({handleChange, handleSubmit,
     return (
         <div className="form-container">
             <form onSubmit={
-                (evt) => {
-                    console.log(evt) 
-                    handleSubmit(user, sessionId, face, selectedQuantity, evt)}
-            
-        }>
+                (evt) => { handleSubmit(user, sessionId, face, selectedQuantity, evt) }
+            }>
                 <legend>Select a quantity:</legend>
                 <div>
                     <select
@@ -22,9 +19,9 @@ export default function AddFace({handleChange, handleSubmit,
                         id="quantity"
                         value="1"
                         onChange={handleChange}>
-                            {options.map(opt => (
-                                <option key={opt} value={opt}>{opt}</option>
-                            )) }
+                        {options.map(opt => (
+                            <option key={opt} value={opt}>{opt}</option>
+                        ))}
                     </select>
                 </div>
                 <button type="submit" className="btn btn-danger">Add to Cart</button>
