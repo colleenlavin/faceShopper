@@ -1,11 +1,27 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import AddFace from '../components/AddFace'
 import Face from '../components/Face'
-import {postToCart} from '../reducers/cartItem'
+import { postCartItem} from '../reducers/cartItems'
 
-const mapStateToProps = (state) => ({face: state.selectedFace, userId: state.userId, 
-    sessionId: state.sessionId })
+const mapStateToProps = (state) => ({
+    face: state.faces.selected, user: state.auth,
+    sessionId: state.sessionId
+})
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleSubmit:
+        (user, sessionId, face, quantity, evt) => {
+            console.log("user is ", user)
+            console.log("session id is ", sessionId)
+            console.log("face.id is ", face.id)
+            console.log("quantity is ", quantity)
+            dispatch(postCartItem(user, sessionId, face.id, quantity))
+            // FaceConter.setState({ selectedQuantity: 1 }) // how do we do this?
+            evt.preventDefault()
+        }
+    }
+}
 
 class FaceContainer extends Component {
 
@@ -17,29 +33,24 @@ class FaceContainer extends Component {
         }
 
         this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleChange(evt){
+    handleChange(evt) {
         this.setState({
             selectedQuantity: evt.target.value
         })
-    }
-
-    handleSubmit(selectedFace, evt) {
-        evt.preventDefault()
-        dispatch(postToCart(userId, sessionId, selectedFace, this.state.quantity))
-        this.setState({selectedQuantity : 0})
     }
 
     render() {
         return (
             <div>
                 <Face {...this.state} {...this.props} />
-                <AddFace {...this.state} {...this.props} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+                <AddFace {...this.state} {...this.props} handleChange={this.handleChange} />
             </div>
         )
     }
 }
 
-export default connect(mapStateToProps)(FaceContainer);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FaceContainer);

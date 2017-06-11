@@ -41,6 +41,13 @@ module.exports = app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
 
+   // Set up session:
+  .use(session({
+    secret: 'timeforfaces', //is this something we should be storing offline?  -KS
+    resave: false,
+    saveUninitialized: false
+  }))
+
   // Authentication middleware
   .use(passport.initialize())
   .use(passport.session())
@@ -48,15 +55,10 @@ module.exports = app
   // Serve static files from ../public
   .use(express.static(resolve(__dirname, '..', 'public')))
 
+ 
+
   // Serve our api - ./api also requires in ../db, which syncs with our database
   .use('/api', require('./api'))
-
-  // Set up session:
-  .use(session({
-    secret: 'timeforfaces',
-    resave: false,
-    saveUninitialized: false
-  }))
 
   // any requests with an extension (.js, .css, etc.) turn into 404
   .use((req, res, next) => {

@@ -1,5 +1,7 @@
 import axios from 'axios'
 import update from 'immutability-helper';
+import store from '../store'
+console.log("store is ", store)
 
 //CONSTANTS
 
@@ -15,10 +17,10 @@ const initialCartState = {
 
 const reducer = (state = initialCartState, action) => {
   const newState = Object.assign({}, state);
-  const cart = store.getState().cart
-  const old = cart.filter(item => item.id == action.cartItem.id)[0]
-  const idx = cart.indexOf(old)
-
+  // const cart = store.getState().cart
+  // const old = cart.filter(item => item.id == action.cartItem.id)[0]
+  // const idx = cart.indexOf(old)
+  let idx = 1
   switch (action.type) {
 
     case ADD_CART_ITEM:
@@ -40,7 +42,7 @@ const reducer = (state = initialCartState, action) => {
 }
 
 // ACTION CREATORS:
-export const addCartItem = cartItem => ({
+export const addCartItem = (cartItem) => ({
   type: ADD_CART_ITEM, cartItem
 })
 
@@ -54,17 +56,21 @@ export const removeCartItem = () => ({
 
 //ASYNC ACTION CREATORS
 
-export const postCartItem = (userId, sessionId, cartItem, quantity) => (
+export const postCartItem = (userId, sessionId, faceId, quantity=1) => (
   dispatch => {
     let route
-    userId ? route = '' : route = `/api/unAuthCarts/${sessionId}` //need to figure this out if we're logged in
-    axios.post(route, {cartItem})
-      .then(res => res.data)
+    userId ? route = '' : route = `/api/carts/${sessionId}` //need to figure out route if we're logged in
+    axios.post(route, {faceId: faceId})
+      .then(
+        res => {
+          console.log("res.data ", res.data)
+          return res.data}
+        )
       .then(cartItem => dispatch(addCartItem(cartItem)))
       .catch(err => console.log(err)) //how are we supposed to handle errors here?
   })
 
-export const updateCartItem = (userId, sessionId, cartItem, quantity) => (
+export const updateCartItem = (userId, sessionId, cartItem, quantity, cart) => (
   dispatch => {
     let route
     userId ? route = '' : route = `/api/unAuthCarts/${sessionId}/${cartItem.id}` //need to figure this out if we're logged in
@@ -73,3 +79,5 @@ export const updateCartItem = (userId, sessionId, cartItem, quantity) => (
       .then(cartItem => dispatch(changeCartItem(cartItem)))
       .catch(err => console.log(err))
   })
+
+export default reducer

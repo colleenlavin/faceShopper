@@ -50,7 +50,7 @@ export default function Cart({cart, removeItem, handleChange, handleSubmit}) {
             ))
           }
         </ul>
-        <button type="submit" className="btn btn-danger">Add to Cart</button>
+        <button type="submit" className="btn btn-danger">Checkout</button>
         </form>
       </div>
     </div>

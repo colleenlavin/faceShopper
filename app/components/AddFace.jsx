@@ -1,14 +1,20 @@
 import React from 'react'
 import _ from 'lodash'
 
-export default function AddFace({handleChange, handleSubmit, selectedFace }) {
-   
-    const quantity = selectedFace.quantity
-    const options = _.range(quantity + 1)
+export default function AddFace({handleChange, handleSubmit, 
+    face, user, sessionId, selectedQuantity }) {
+
+    const quantityOnHand = face.quantity
+    const options = _.range(quantityOnHand + 1)
 
     return (
         <div className="form-container">
-            <form onSubmit={(evt) => {handleSubmit(selectedFace, evt)}}>
+            <form onSubmit={
+                (evt) => {
+                    console.log(evt) 
+                    handleSubmit(user, sessionId, face, selectedQuantity, evt)}
+            
+        }>
                 <legend>Select a quantity:</legend>
                 <div>
                     <select

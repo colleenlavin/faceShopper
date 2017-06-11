@@ -8,8 +8,8 @@ const DESELECT_FACE = 'DESELECT_FACE'
 
 // REDUCER:
 const initialFacesState ={
-  selectedFace: {},
-  faces: []
+  selected: {},
+  list: []
 }
 const reducer = (state=initialFacesState, action) => {
   const newState = Object.assign({}, state);
@@ -17,15 +17,15 @@ const reducer = (state=initialFacesState, action) => {
   switch (action.type) {
 
     case RECEIVE_FACES:
-      newState.faces = action.faces;
+      newState.list = action.faces;
       break;
 
     case SELECT_FACE:
-      newState.selectedFace = action.selectedFace;
+      newState.selected = action.selectedFace;
       break;
 
     case DESELECT_FACE:
-      newState.selectedFace = action.selectedFace;
+      newState.selected = action.selectedFace;
       break;
 
   }
@@ -34,11 +34,11 @@ const reducer = (state=initialFacesState, action) => {
 
 // ACTION CREATORS:
 export const receiveFaces = faces => ({
-  type: RECEIVE_FACES, list
+  type: RECEIVE_FACES, faces
 })
 
 export const selectFace = selectedFace => ({
-  type: SELECT_FACE, selected
+  type: SELECT_FACE, selectedFace
 })
 
 export const deselectFace = () => ({

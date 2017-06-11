@@ -9,7 +9,8 @@ module.exports = db => db.define('cartItem', {
     autoIncrement: true
   },
   quantity: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    defaultValue: 1
   },
   price: {
     type: Sequelize.FLOAT
@@ -20,6 +21,11 @@ module.exports = db => db.define('cartItem', {
               this.update(                         // CartItem.migrate(Cart.getUnAuthCartId(sessionId), Cart.getUserCartId(userId))
                   { cartId: userCartId },
                   { where: {cartId: unAuthCartId} })
+          }
+      },
+      instanceMethods: {
+          increment() {
+            this.quantity++
           }
       }
   })
