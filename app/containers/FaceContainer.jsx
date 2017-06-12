@@ -1,9 +1,24 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import AddFace from '../components/AddFace'
 import Face from '../components/Face'
+import { postCartItem} from '../reducers/cartItems'
 
-const mapStateToProps = (state) => ({face: state.faces.selected})
+const mapStateToProps = (state) => ({
+    face: state.faces.selected, user: state.auth,
+    sessionId: state.sessionId
+})
+const mapDispatchToProps = (dispatch) => {
+    return {
+        postCartItem: 
+        (user, sessionId, face, selectedQuantity) => {
+            console.log("HELLLO")
+            dispatch(postCartItem(user, sessionId, face, selectedQuantity))
+        }
+    }
+}
+
 
 class FaceContainer extends Component {
 
@@ -18,27 +33,30 @@ class FaceContainer extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleChange(evt){
+    handleChange(evt) {
         this.setState({
             selectedQuantity: evt.target.value
         })
     }
 
-    handleSubmit(evt) {
+    handleSubmit(user, sessionId, face, selectedQuantity, evt) {
         evt.preventDefault()
-        console.log("I've been submitted!")
-        // add to cart here
-        this.setState({selectedQuantity : 0})
+        console.log("props ", this.props)
+        this.props.postCartItem(user, sessionId, face, quantity)
+        this.setState({ selectedQuantity: 1 }) 
+        console.log("I'M HERE")
     }
 
     render() {
         return (
             <div>
                 <Face {...this.state} {...this.props} />
-                <AddFace {...this.state} {...this.props} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+                <AddFace {...this.state} {...this.props} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
             </div>
         )
     }
 }
 
-export default connect(mapStateToProps)(FaceContainer);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FaceContainer);
