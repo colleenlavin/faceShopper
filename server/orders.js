@@ -38,6 +38,11 @@ module.exports = require('express').Router()
   (req, res, next) => {
     Order.findById(req.params.id)
       .then(order => order.update(req.body))
-      .then(order => res.status(201).json(order))
+      .then(order => {
+        Order.findById(order.id, {
+          include: [OrderItem]
+        })
+        .then(order => res.status(201).json(order))
+      })
       .catch(next);
   })
