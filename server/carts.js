@@ -36,8 +36,8 @@ module.exports = require('express').Router()
       ))
    .catch(next))
 
-  .post('/:sessionId/:faceId', (req, res, next) =>
-    CartItem.create({cartId: req.requestedCart.id, faceId: req.params.faceId, quantity: req.body.quantity, price: req.body.price})
+  .post('/:sessionId', (req, res, next) =>
+    CartItem.create({cartId: req.requestedCart.id, faceId: req.body.faceId, quantity: req.body.quantity, price: req.body.price})
     .then(res.json(requestedCart))
     .catch(next))
 
