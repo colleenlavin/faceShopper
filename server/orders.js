@@ -11,16 +11,17 @@ module.exports = require('express').Router()
   (req, res, next) => {
     // Specific names of req.body properties may need to be updated based on structure of axios request!
     // If this isn't working try that
+    console.log('req', typeof req.body.cart.cartItems[0].face_id)
     Order.create({
       sessionId: req.body.cart.sessionId
     })
       .then(order => {
         let itemPromises = []
-        req.body.cartItems.map(cartItem => {
+        req.body.cart.cartItems.map(cartItem => {
           itemPromises.push(OrderItem.create({
             order_id: order.id,
             quantity: cartItem.quantity,
-            face_id: cartItem.face_id,
+            face_id: Number(cartItem.face_id),
             price: cartItem.price
           }))})
           Promise.all(itemPromises)
