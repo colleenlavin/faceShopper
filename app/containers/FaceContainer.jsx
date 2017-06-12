@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import AddFace from '../components/AddFace'
 import Face from '../components/Face'
 import { postCartItem} from '../reducers/cartItems'
@@ -10,14 +11,14 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleSubmit:
-        (user, sessionId, face, quantity, evt) => {
-            dispatch(postCartItem(user, sessionId, face, quantity))
-            // FaceConter.setState({ selectedQuantity: 1 }) // how do we do this?
-            evt.preventDefault()
+        postCartItem: 
+        (user, sessionId, face, selectedQuantity) => {
+            console.log("HELLLO")
+            dispatch(postCartItem(user, sessionId, face, selectedQuantity))
         }
     }
 }
+
 
 class FaceContainer extends Component {
 
@@ -29,6 +30,7 @@ class FaceContainer extends Component {
         }
 
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange(evt) {
@@ -37,11 +39,18 @@ class FaceContainer extends Component {
         })
     }
 
+    handleSubmit(user, sessionId, face, selectedQuantity, evt) {
+        evt.preventDefault()
+        postCartItem(user, sessionId, face, quantity)
+        this.setState({ selectedQuantity: 1 }) 
+        console.log("I'M HERE")
+    }
+
     render() {
         return (
             <div>
                 <Face {...this.state} {...this.props} />
-                <AddFace {...this.state} {...this.props} handleChange={this.handleChange} />
+                <AddFace {...this.state} {...this.props} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
             </div>
         )
     }

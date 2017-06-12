@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 export default function AddFace({ handleChange, handleSubmit,
-    face, user, sessionId, selectedQuantity }) {
+    face, user, sessionId, selectedQuantity, postCartItem }) {
 
     const quantityOnHand = face.quantity
     const options = _.range(quantityOnHand + 1)
