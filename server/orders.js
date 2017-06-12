@@ -11,7 +11,6 @@ module.exports = require('express').Router()
   (req, res, next) => {
     // Specific names of req.body properties may need to be updated based on structure of axios request!
     // If this isn't working try that
-    console.log('req', typeof req.body.cart.cartItems[0].face_id)
     Order.create({
       sessionId: req.body.cart.sessionId
     })
@@ -24,10 +23,21 @@ module.exports = require('express').Router()
             face_id: Number(cartItem.face_id),
             price: cartItem.price
           }))})
-          Promise.all(itemPromises)
-            .then(orderItems => res.status(201).json(order))
-            .catch(next);
+          return Promise.all(itemPromises)
+      })
+      .then(orderItems => {
+        Order.findById(orderItems[0].order_id, {
+          include: [OrderItem]
+        })
+        .then(order => res.status(201).json(order))
       })
       .catch(next);
-  }
-  )
+  })
+
+  .put('/:id',
+  (req, res, next) => {
+    Order.findById(req.params.id)
+      .then(order => order.update(req.body))
+      .then(order => res.status(201).json(order))
+      .catch(next);
+  })
