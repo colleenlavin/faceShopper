@@ -13,7 +13,7 @@ const initialFacesState ={
 }
 const reducer = (state=initialFacesState, action) => {
   const newState = Object.assign({}, state);
-  console.log("action ", action)
+  console.log("action ", action) //remove logs
   switch (action.type) {
 
     case RECEIVE_FACES:
@@ -25,9 +25,9 @@ const reducer = (state=initialFacesState, action) => {
       break;
 
     case DESELECT_FACE:
-      newState.selected = action.selectedFace;
+      newState.selected = action.selectedFace; // could we change this to an empty obj? -amkh
       break;
-
+  // add in a default return of prev state -amkh
   }
   return newState
 }
@@ -52,11 +52,12 @@ export const getFaces = () => (
     axios.get('/api/faces')
       .then(faces => dispatch(receiveFaces(faces.data)))
    )
+//don't forget error handling :) and also can we show this to the user? -amkh
 
 export const getFace = id => (
   dispatch =>
     axios.get(`/api/faces/${id}`)
       .then(face => dispatch(selectFace(face.data)))
    )
-
+    //same as line 55 -amkh
 export default reducer

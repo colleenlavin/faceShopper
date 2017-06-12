@@ -18,7 +18,7 @@ import CartContainer from './containers/CartContainer'
 import FaceContainer from './containers/FaceContainer'
 import FacesContainer from './containers/FacesContainer'
 
-import {getFaces} from './reducers/faces'
+import {getFaces} from './reducers/faces' // lets add line 22 to this also :) -amkh
 import {getFace} from './reducers/faces'
 import {getSession} from './reducers/guestSess'
 
@@ -44,7 +44,7 @@ const onFaceEnter = function (nextRouterState) {
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={ExampleApp}> {/* update to something else, allfaces?? also maybe here we can add the onAppEnter so we can just have it in place */}
         <IndexRedirect to="/home" />
         <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces" component={FacesContainer} onEnter={onAppEnter} />

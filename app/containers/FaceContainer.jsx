@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => {
     return {
-        postCartItem: 
+        postCartItem:
         (user, sessionId, face, selectedQuantity) => {
             console.log("HELLLO")
             dispatch(postCartItem(user, sessionId, face, selectedQuantity))
@@ -43,7 +43,7 @@ class FaceContainer extends Component {
         evt.preventDefault()
         console.log("props ", this.props)
         this.props.postCartItem(user, sessionId, face, quantity)
-        this.setState({ selectedQuantity: 1 }) 
+        this.setState({ selectedQuantity: 1 }) // this might not be right.... -amkh
         console.log("I'M HERE")
     }
 

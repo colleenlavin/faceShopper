@@ -12,7 +12,7 @@ export default function Faces({faces, handleClick}) {
 			</div>
 			<div className="row" >
 				{
-					faces && faces.map(face => (
+					faces && faces.map(face => ( //do we need the && faces should default to an array -amkh
 						<div className="col-md-2 face-item" key={face.id}>
 
 							<Link to={`/faces/${face.id}`}>
@@ -21,7 +21,7 @@ export default function Faces({faces, handleClick}) {
 							</Link>
 							<h3>{face.price}</h3>
 							<h4>{face.description}</h4>
-							<button type="button" className="btn btn-danger" value={face.id} 
+							<button type="button" className="btn btn-danger" value={face.id}
 								onClick={handleClick}>Add to Cart</button>
 						</div>
 						))

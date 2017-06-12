@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import _ from 'lodash'
 
 export default function Cart({handleChange, handleSubmit, cart, userId, sessionId}) {
-  
+
     const options = _.range(10)
 
   return (
@@ -12,7 +12,7 @@ export default function Cart({handleChange, handleSubmit, cart, userId, sessionI
         <form onSubmit={handleSubmit}>
         <ul>
           {
-            cart && cart.map(item => (
+            cart && cart.map(item => ( // cart should have a default and so we shouldn't need the && -amkh
               <div key={item.id}>
                 <li>{item.face.title}
                   <span title="price" className="price">${item.price}</span>

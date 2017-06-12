@@ -24,12 +24,14 @@ const reducer = (state = initialCartState, action) => {
   // const old = cart.filter(item => item.id == action.cartItem.id)[0]
   // const idx = cart.indexOf(old)
 
+  // state.cart should be your cart :) -amkh
+
   let idx = 1
 
   switch (action.type) {
 
     case ADD_CART_ITEM:
-      newState.cart = update(state, { cart: { $push: [action.cartItem] } }).cart
+      newState.cart = update(state, { cart: { $push: [action.cartItem] } }).cart // we should look into this update function to check that it's not just adding another cart item. -amkh
       break;
 
     case CHANGE_CART_ITEM:
@@ -60,13 +62,13 @@ export const removeCartItem = () => ({
 
 //ASYNC ACTION CREATORS
 
-export const postCartItem = (userId, sessionId, face, quantity=1) => (dispatch) => {
+export const postCartItem = (userId, sessionId, face, quantity=1) => (dispatch) => { //nice default! -amkh
     console.log("IM IN POST CART ITEM")
-    let route
+    let route // lets put lines 67 and 68 together -amkh
     userId ? route = '' : route = `/api/carts/${sessionId}` //need to figure out route if we're logged in
     axios.post(route, {face})
       .then(
-        res => {return res.data
+        res => {return res.data //if we remove the { then we have a default return of the res.data make this line look like 84 :)
         })
       .then(cartItem => {
         cartItem.face = face
@@ -75,8 +77,8 @@ export const postCartItem = (userId, sessionId, face, quantity=1) => (dispatch) 
       .catch(err => console.log(err)) //how are we supposed to handle errors here?
   }
 
-export const updateCartItem = (userId, sessionId, cartItem, quantity, cart) => (dispatch) => {
-    let route
+export const updateCartItem = (userId, sessionId, cartItem, quantity, cart) => (dispatch) => { // can we pull out the cart if we aren't using it? -amkh
+    let route // same as 67 -amkh
     userId ? route = '' : route = `/api/unAuthCarts/${sessionId}/${cartItem.id}` //need to figure this out if we're logged in
     axios.put(route, { quantity })
       .then(res => res.data)
