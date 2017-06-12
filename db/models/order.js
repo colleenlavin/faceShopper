@@ -4,10 +4,41 @@ const Sequelize = require('sequelize')
 
 
 module.exports = db => db.define('order', {
+  sessionId: Sequelize.STRING,
   date: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW
   },
+  name: {
+    type: Sequelize.STRING
+  },
+  address1: {
+    type: Sequelize.STRING
+  },
+  address2: {
+    type: Sequelize.STRING
+  },
+  city: {
+    type: Sequelize.STRING
+  },
+  state: {
+    type: Sequelize.STRING
+  },
+  zip: {
+    type: Sequelize.INTEGER
+  },
+  ccn: {
+    type: Sequelize.INTEGER,
+    isCreditCard: true,
+    allowNull: true
+  },
+  expDate: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
+  },
+  ccv: {
+    type: Sequelize.INTEGER
+  }
 }, {
   instanceMethods: {
     getSubtotal: function() {
