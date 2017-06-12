@@ -18,7 +18,7 @@ module.exports = require('express').Router()
     Cart.scope('populated')
     .findOrCreate({where: {sessionId: req.params.sessionId}})
     .spread((cart, created) => cart)
-    .then(cart =>
+    .then(cart =>{
       req.requestedCart = cart
       next()
       return null
@@ -34,51 +34,54 @@ module.exports = require('express').Router()
     .then(cart => res.json(cartItems.reduce(
       (acc, cur) => acc.price * acc.quantity + cur.price * cur.quantity, 0
       ))
+    )
    .catch(next))
 
-  .post('/:sessionId', (req, res, next) =>
+  .post('/:sessionId', 
+    (req, res, next) =>
     CartItem.create({cartId: req.requestedCart.id, faceId: req.body.faceId, quantity: req.body.quantity, price: req.body.price})
-    .then(res.json(requestedCart))
+    .then((cartItem)=>res.json(cartItem))
     .catch(next))
 
   .put('/:sessionId/:faceId/add', (req, res, next) => 
-    CartItem.findOne({
-      where: {
-        cartId: req.requestedCart.id,
-        faceId: req.params.faceId
-      }
-    })
-    .then(item => 
-      item.update(
-        {quantity: item.quantity + 1}
+      CartItem.findOne({
+        where: {
+          cartId: req.requestedCart.id,
+          faceId: req.params.faceId
+        }
+      })
+      .then(item => 
+        item.update(
+          {quantity: item.quantity + 1}
+          )
         )
-      )
-    .then(() => next())
-    .catch(next))
+      .then((updatedItem) => res.json(updatedItem))
+      .catch(next))
 
     .put('/:sessionId/:faceId/subtract', (req, res, next) => 
-    CartItem.findOne({
-      where: {
-        cartId: req.requestedCart.id,
-        faceId: req.params.faceId
-      }
-    })
-    .then(item => 
-      item.update(
-        {quantity: item.quantity - 1}
-        )
-      )
-    .then(() => next())
-    .catch(next))
+        CartItem.findOne({
+          where: {
+            cartId: req.requestedCart.id,
+            faceId: req.params.faceId
+          }
+        })
+        .then(item => 
+          item.update(
+            {quantity: item.quantity - 1}
+            )
+          )
+        .then((updatedItem) => res.json(updatedItem))
+        .catch(next))
 
-  .delete('/:sessionId/:faceId', (req, res, next) =>
-    CartItem.destroy({
-      where: {
-        cartId: req.requestedCart.id,
-        faceId: req.params.faceId
-      }
-    })
-    .then(() => next())
-    .catch(next))
+  // .delete('/:sessionId/:faceId', (req, res, next) =>
+  //   CartItem.destroy({
+  //     where: {
+  //       cartId: req.requestedCart.id,
+  //       faceId: req.params.faceId
+  //     }
+  //   })
+  //   .then(() => res)
+  //   .catch(next)
+  //   )
 
 
