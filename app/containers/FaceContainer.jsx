@@ -41,7 +41,8 @@ class FaceContainer extends Component {
 
     handleSubmit(user, sessionId, face, selectedQuantity, evt) {
         evt.preventDefault()
-        postCartItem(user, sessionId, face, quantity)
+        console.log("props ", this.props)
+        this.props.postCartItem(user, sessionId, face, quantity)
         this.setState({ selectedQuantity: 1 }) 
         console.log("I'M HERE")
     }
