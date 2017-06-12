@@ -8,6 +8,7 @@ api
   .use('/users', require('./users'))
   .use('/faces', require('./faces'))
   .use('/carts', require('./carts'))
+  .use('/orders', require('./orders'))
 
 // No routes matched? 404.
 api.use((req, res) => res.status(404).end())
