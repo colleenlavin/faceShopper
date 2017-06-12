@@ -9,26 +9,32 @@ module.exports = db => db.define('cartItem', {
     autoIncrement: true
   },
   quantity: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    defaultValue: 1
   },
   price: {
     type: Sequelize.FLOAT
   }
 }, {
-      classMethods: {
-          migrate(unAuthCartId, userCartId) {    // this can get called like so: 
-              this.update(                         // CartItem.migrate(Cart.getUnAuthCartId(sessionId), Cart.getUserCartId(userId))
-                  { cartId: userCartId },
-                  { where: {cartId: unAuthCartId} })
-          }
+    classMethods: {
+      migrate(unAuthCartId, userCartId) {    // this can get called like so: 
+        this.update(                         // CartItem.migrate(Cart.getUnAuthCartId(sessionId), Cart.getUserCartId(userId))
+          { cartId: userCartId },
+          { where: { cartId: unAuthCartId } })
       }
+    },
+    instanceMethods: {
+      increment() {
+        this.quantity++
+      }
+    }
   })
 
-module.exports.associations = (CartItem, {Cart, Face}) => {
+module.exports.associations = (CartItem, { Cart, Face }) => {
   CartItem.belongsTo(Cart, {
-      foreignKey: { allowNull: false }
+    foreignKey: { allowNull: false }
   })
   CartItem.belongsTo(Face, {
-      foreignKey: { allowNull: false } 
+    foreignKey: { allowNull: false }
   })
 }

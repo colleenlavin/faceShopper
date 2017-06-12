@@ -8,8 +8,9 @@ const {resolve} = require('path')
 const passport = require('passport')
 const PrettyError = require('pretty-error')
 const finalHandler = require('finalhandler')
+var nocache = require('nocache')
 
-require('../secrets')
+//require('../secrets') //this throws an error - KS
 // PrettyError docs: https://www.npmjs.com/package/pretty-error
 
 // Bones has a symlink from node_modules/APP to the root of the app.
@@ -41,6 +42,15 @@ module.exports = app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
 
+  app.use(nocache())
+
+   // Set up session:
+  .use(session({
+    secret: 'timeforfaces', //is this something we should be storing offline?  -KS
+    resave: false,
+    saveUninitialized: false
+  }))
+
   // Authentication middleware
   .use(passport.initialize())
   .use(passport.session())
@@ -48,15 +58,10 @@ module.exports = app
   // Serve static files from ../public
   .use(express.static(resolve(__dirname, '..', 'public')))
 
+ 
+
   // Serve our api - ./api also requires in ../db, which syncs with our database
   .use('/api', require('./api'))
-
-  // Set up session:
-  .use(session({
-    secret: 'timeforfaces',
-    resave: false,
-    saveUninitialized: false
-  }))
 
   // any requests with an extension (.js, .css, etc.) turn into 404
   .use((req, res, next) => {
