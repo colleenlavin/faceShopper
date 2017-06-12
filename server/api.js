@@ -10,7 +10,7 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/faces', require('./faces'))
-  .use('/carts', require('./unAuthCarts'))
+  .use('/carts', require('./carts'))
 
 
 // No routes matched? 404.

@@ -60,10 +60,10 @@ export const removeCartItem = () => ({
 
 //ASYNC ACTION CREATORS
 
-export const postCartItem = (userId, sessionId, face, quantity=1) => (dispatch) => {
-    console.log("IM IN POST CART ITEM")
-    let route
-    userId ? route = '' : route = `/api/carts/${sessionId}` //need to figure out route if we're logged in
+export const postCartItem = (user, sessionId, face, quantity=1) => (dispatch) => {
+    let userId
+    user.id == ''? userId = 'NOTFOUND' : userId = user.id
+    let route = `/api/carts/${userId}/${sessionId}` //need to figure out route if we're logged in
     axios.post(route, {face})
       .then(
         res => {return res.data
@@ -76,8 +76,7 @@ export const postCartItem = (userId, sessionId, face, quantity=1) => (dispatch) 
   }
 
 export const updateCartItem = (userId, sessionId, cartItem, quantity, cart) => (dispatch) => {
-    let route
-    userId ? route = '' : route = `/api/unAuthCarts/${sessionId}/${cartItem.id}` //need to figure this out if we're logged in
+    let route = `/api/carts/${userId}/${sessionId}/${cartItem.id}` //need to figure this out if we're logged in
     axios.put(route, { quantity })
       .then(res => res.data)
       .then(cartItem => dispatch(changeCartItem(cartItem)))

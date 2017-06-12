@@ -12,6 +12,14 @@ const selfOnly = action => (req, res, next) => {
   next()
 }
 
+const selfOrSessionOnly = action => (req, res, next) => {
+  if (req.params.userId !== req.user.id && req.sessionID != req.params.sessionId) {
+    return res.status(403).send(`You can only ${action} yourself.`)
+  }
+  next()
+}
+
+
 const forbidden = message => (req, res) => {
   res.status(403).send(message)
 }
