@@ -57,7 +57,9 @@
     "express-session": "^1.15.3",
     "finalhandler": "^1.0.0",
     "homedir": "^0.6.0",
+    "immutability-helper": "^2.2.2",
     "lodash": "^4.17.4",
+    "nocache": "^2.0.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github2": "^0.1.10",
@@ -75,7 +77,8 @@
     "redux-thunk": "^2.1.0",
     "sequelize": "^3.24.6",
     "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "babel": "^6.5.2",

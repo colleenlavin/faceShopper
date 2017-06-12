@@ -20,6 +20,7 @@ import FacesContainer from './containers/FacesContainer'
 
 import {getFaces} from './reducers/faces'
 import {getFace} from './reducers/faces'
+import {getSession} from './reducers/guestSess'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
