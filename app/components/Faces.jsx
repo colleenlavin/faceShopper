@@ -22,7 +22,6 @@ export default function Faces(props) {
 								<h3>{face.title}</h3>
 							</Link>
 							<h3>{face.price}</h3>
-							<h4>{face.description}</h4>
 							<button type="button" className="btn btn-danger">Add to Cart</button>
 						</div>
 						))

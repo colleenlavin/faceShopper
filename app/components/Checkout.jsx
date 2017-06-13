@@ -25,6 +25,7 @@ export default function Checkout(props) {
       */
     return (
         <div className="form-container">
+            <h1>Checkout</h1>
             <form onSubmit={handleSubmit}>
                 <legend>Select a quantity:</legend>
                 <div>
