@@ -2,14 +2,14 @@
 
 
 const db = require('APP/db')
-    , {User, Promise} = db
+    , {User, Face, Promise} = db
     , {mapValues} = require('lodash')
 
 function seedEverything() {
   console.log('in seed file')
   const seeded = {
     users: users(),
-    
+    faces: faces()
   }
 
   // seeded.favorites = favorites(seeded)
@@ -22,6 +22,7 @@ const users = seed(User, {
     email: 'god@example.com',
     name: 'So many names',
     password: '1234',
+    isAdmin: true,
   },
   barack: {
     name: 'Barack Obama',
@@ -30,44 +31,43 @@ const users = seed(User, {
   },
 })
 
-// const things = seed(Thing, {
-//   surfing: {name: 'surfing'},
-//   smiting: {name: 'smiting'},
-//   puppies: {name: 'puppies'},
-// })
-
-// const favorites = seed(Favorite,
-//   // We're specifying a function here, rather than just a rows object.
-//   // Using a function lets us receive the previously-seeded rows (the seed
-//   // function does this wiring for us).
-//   //
-//   // This lets us reference previously-created rows in order to create the join
-//   // rows. We can reference them by the names we used above (which is why we used
-//   // Objects above, rather than just arrays).
-//   ({users, things}) => ({
-//     // The easiest way to seed associations seems to be to just create rows
-//     // in the join table.
-//     'obama loves surfing': {
-//       user_id: users.barack.id,    // users.barack is an instance of the User model
-//                                    // that we created in the user seed above.
-//                                    // The seed function wires the promises so that it'll
-//                                    // have been created already.
-//       thing_id: things.surfing.id  // Same thing for things.
-//     },
-//     'god is into smiting': {
-//       user_id: users.god.id,
-//       thing_id: things.smiting.id
-//     },
-//     'obama loves puppies': {
-//       user_id: users.barack.id,
-//       thing_id: things.puppies.id
-//     },
-//     'god loves puppies': {
-//       user_id: users.god.id,
-//       thing_id: things.puppies.id
-//     },
-//   })
-// )
+const faces = seed(Face, {
+  grace: {
+    title: 'Grace Hopper',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Grace_Hopper.jpg/220px-Grace_Hopper.jpg',
+    description: 'An American computer scientist and United States Navy rear admiral.',
+    price: 19.06,
+    quantity: 7
+  },
+  ada: {
+    title: 'Ada Lovelace',
+    image: 'https://cacm.acm.org/system/assets/0002/0859/082015_CACMpg21_Innovators-Assemble.large.jpg?1476779511&1440165064',
+    description: 'An English mathematician and writer, chiefly known for her work on the Analytical Engine.',
+    price: 18.15,
+    quantity: 3
+  },
+  hedy: {
+    title: 'Hedy Lamarr',
+    image: 'https://s-media-cache-ak0.pinimg.com/originals/a1/95/38/a19538757fc094a690a55bb25f9ca8c3.jpg',
+    description: 'An Austrian and American film actress and inventor.',
+    price: 19.14,
+    quantity: 8
+  },
+  alan: {
+    title: 'Alan Turing',
+    image: 'https://sophosnews.files.wordpress.com/2012/06/alan-turing-portrait-250.png?w=250',
+    description: 'An English computer scientist, mathematician, logician, cryptanalyst, philosopher and theoretical biologist.',
+    price: 19.12,
+    quantity: 2
+  },
+  mary: {
+    title: 'Mary Jackson',
+    image: 'https://cacm.acm.org/system/assets/0002/6304/12517.space.com.mary_jackson_nasa.large.jpg?1485365666&1485365666',
+    description: 'A mathematician and aerospace engineer at the NASA.',
+    price: 19.21,
+    quantity: 6
+  }
+})
 
 if (module === require.main) {
   db.didSync
