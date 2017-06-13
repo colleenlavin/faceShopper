@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {browserHistory} from 'react-router'
 
 
 // ACTIONS:
@@ -58,5 +59,17 @@ export const getFace = id => (
     axios.get(`/api/faces/${id}`)
       .then(face => dispatch(selectFace(face.data)))
    )
+
+export const addNewFace = (faceTitle, faceImage, faceDescription, facePrice, faceQuantity) =>{
+  return (dispatch, getState) => {
+    return axios.post(`/api/faces`, {title: faceTitle, image: faceImage, description: faceDescription, price: facePrice, quantity: faceQuantity})
+    .then(res => res.data)
+    .then(newFace => {
+      const newListOfFaces = getState().faces.list.concat([newFace])
+      dispatch(receiveFaces(newListOfFaces))
+      browserHistory.push(`/faces`)
+    })
+  }
+}
 
 export default reducer

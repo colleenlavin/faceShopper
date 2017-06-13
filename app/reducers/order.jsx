@@ -8,7 +8,7 @@ const RECEIVE_ORDER = 'RECEIVE_ORDER'
 const initialOrderState = {
   order: {}
 }
-const reducer = (state = initialOrdersState, action) => {
+const reducer = (state = initialOrderState, action) => {
   const newState = Object.assign({}, state);
   switch (action.type) {
 
@@ -46,3 +46,5 @@ export const putOrder = data => (
     axios.put(`/api/orders/${data.id}`, data.updates)
       .then(order => dispatch(receiveOrder(order.data)))
 )
+
+export default reducer
