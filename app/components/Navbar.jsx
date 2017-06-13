@@ -4,7 +4,7 @@ import Login from './Login'
 
 // import WhoAmI from './WhoAmI'
 
-export default function Navbar() {
+export default function Navbar({handleClick}) {
     return (
         <nav className="navbar navbar-inverse   navbar-fixed-top topnav " role="navigation">
             <div className="container topnav">
@@ -12,7 +12,7 @@ export default function Navbar() {
                     <ul className="nav navbar-nav navbar-right">
                         <li><Link id="home" to="/home">Home</Link></li>
                         <li><Link id="faces" to="/faces">Faces</Link></li>
-                        <li><Link id="cart" to="/cart">Cart</Link></li>
+                        <li><Link id="cart" to="/cart" onClick={handleClick}>Cart</Link></li>
                     </ul>
                     <div className="nav navbar-nav navbar-left">
                         <Link id="login" to="/login">Login</Link>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 
-export default function Cart({handleChange, handleSubmit, cart, userId, sessionId}) {
+export default function Cart({handleChange, handleSubmit, cart, user, sessionId, quantities}) {
   
     const options = _.range(10)
 
@@ -12,7 +12,7 @@ export default function Cart({handleChange, handleSubmit, cart, userId, sessionI
         <form onSubmit={handleSubmit}>
         <ul>
           {
-            cart && cart.map(item => (
+            cart.map(item => (
               <div key={item.id}>
                 <li>{item.face.title}
                   <span title="price" className="price">${item.price}</span>
@@ -21,8 +21,8 @@ export default function Cart({handleChange, handleSubmit, cart, userId, sessionI
                   <div>
                     <select
                       className="quantity"
-                      value={item.quantity}
-                      onChange={(evt) => {handleChange(item, evt.target.value)}} >
+                      value={quantities.get(item.id)}
+                      onChange={(evt) => {handleChange(item.id, evt.target.value)}} >
                       {options.map(opt => (
                         <option key={opt} value={opt}>{opt}</option>
                       ))}

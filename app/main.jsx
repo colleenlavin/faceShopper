@@ -28,10 +28,14 @@ const ExampleApp = connect(
 )(
   ({ user, children }) =>
     <div>
-     <Navbar />
+     <Navbar /> {/*handleClick={handleCartClick*/}
       {children}
     </div>
 )
+
+// const handleCartClick = () => {
+//   onCartEnter()
+// }
 
 const onAppEnter = () => {
   store.dispatch(getFaces())
@@ -42,6 +46,11 @@ const onFaceEnter = function (nextRouterState) {
   store.dispatch(getFace(faceId))
 }
 
+// const onCartEnter = function (nextRouterState) {
+//   const cartId = nextRouterState.params.cartId
+//   store.dispatch(getCart(cartId))
+// }
+
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -50,7 +59,7 @@ render(
         <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
-        <Route path="/cart" component={CartContainer} onEnter={onAppEnter} />
+        <Route path="/cart" component={CartContainer} />
         <Route path="/checkout" component={CheckoutContainer}/>
         <Route path="/login" component={LoginPage} onEnter={onAppEnter} />
       </Route>

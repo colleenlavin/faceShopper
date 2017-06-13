@@ -40,15 +40,17 @@ module.exports = require('express').Router()
   CartItem.findOrCreate({
     where: {
       cart_id: req.cart.id,
-      face_id: req.body.face.id
+      face_id: req.body.face.id,
     }
   })
     .spread((cartItem, created) => {
-      if (created) cartItem.quantity +=1 // This isn't working right now.  It seems to always create a new one. -KS
-      return cartItem
+      //if (!created) cartItem.increment(req.body.quantity) // This isn't working right now.  It seems to always create a new one. -KS
+      let newQuant = created? Number(req.body.quantity) : cartItem.quantity + Number(req.body.quantity)
+      cartItem.update({quantity: newQuant, price: req.body.face.price})
+      return [cartItem, created]
     })
-    .then((cartItem) => {
-      res.json(cartItem)
+    .spread((cartItem, created) => {
+      res.json({cartItem:cartItem, created:created})
     })
     .catch(next)
 })

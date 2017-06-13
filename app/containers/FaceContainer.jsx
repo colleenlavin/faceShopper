@@ -13,7 +13,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         postCartItem: 
         (user, sessionId, face, selectedQuantity) => {
-            console.log("HELLLO")
             dispatch(postCartItem(user, sessionId, face, selectedQuantity))
         }
     }
@@ -34,17 +33,14 @@ class FaceContainer extends Component {
     }
 
     handleChange(evt) {
-        this.setState({
+        this.setState({  
             selectedQuantity: evt.target.value
         })
     }
 
     handleSubmit(user, sessionId, face, selectedQuantity, evt) {
         evt.preventDefault()
-        console.log("props ", this.props)
-        this.props.postCartItem(user, sessionId, face, quantity)
-        this.setState({ selectedQuantity: 1 }) 
-        console.log("I'M HERE")
+        this.props.postCartItem(user, sessionId, face, selectedQuantity)
     }
 
     render() {
