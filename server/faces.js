@@ -19,25 +19,25 @@ module.exports = require('express').Router()
       .then(face => res.json(face))
       .catch(next))
 
-  // .put('/:id',
-  //   (req, res, next) =>
-  //   Face.findById(req.params.id)
-  //   .then(face =>
-  //     face.update(
-  //       {quantity: req.body.quantity}
-  //       ) 
-  //     )
-  //   .then(updatedFace => res.json(updatedFace))
-  //   .catch(next))
+  .put('/:id',
+    (req, res, next) =>
+    Face.findById(req.params.id)
+    .then(face =>
+      face.update(
+        {quantity: req.body.quantity}
+        ) 
+      )
+    .then(updatedFace => res.json(updatedFace))
+    .catch(next))
 
-  // .delete('/:id', 
-  //   (req, res, next) =>
-  //   Face.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   })
-  //   .then(() => res.sendStatus(200))
-  //   .catch(next))
+  .delete('/:id', 
+    (req, res, next) =>
+    Face.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(() => res.sendStatus(200))
+    .catch(next))
 
 
