@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
+import {Link} from 'react-router'
 
 export default function Cart({ cart, removeItem, handleChange, handleSubmit }) {
   /* This function assumes that the props will have the following things available:
@@ -50,7 +51,10 @@ export default function Cart({ cart, removeItem, handleChange, handleSubmit }) {
               ))
             }
           </ul>
-          <button type="submit" className="btn btn-danger">Checkout</button>
+          <Link to={`/checkout`}>
+            <button type="submit" className="btn btn-danger">
+              Checkout</button>
+          </Link>
         </form>
       </div>
     </div>

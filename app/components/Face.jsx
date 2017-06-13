@@ -17,7 +17,6 @@ export default function Face(props) {
             <div>
                 <span>{selectedFace.description}</span>
                 <div>${selectedFace.price}</div>
-              
             </div>
         </div>
     )

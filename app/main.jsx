@@ -12,6 +12,8 @@ import Navbar from './components/Navbar'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout'
+import Confirmation from './components/Confirmation'
 import axios from 'axios'
 
 import CartContainer from './containers/CartContainer'
@@ -50,7 +52,8 @@ render(
         <Route path="/faces" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
         <Route path="/cart" component={CartContainer} onEnter={onAppEnter} />
-        <Route path="/checkout" component={CheckoutContainer}/>
+        <Route path="/checkout" component={Checkout}/>
+         <Route path="/confirm" component={Confirmation}/>
         <Route path="/login" component={LoginPage} onEnter={onAppEnter} />
       </Route>
       <Route path='*' component={NotFound} />
