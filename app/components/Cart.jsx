@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
+import { Link } from "react-router";
 
 export default function Cart({handleChange, handleSubmit, cart, user, sessionId, quantities}) {
   
@@ -33,7 +34,9 @@ export default function Cart({handleChange, handleSubmit, cart, user, sessionId,
             ))
           }
         </ul>
+        <Link to={`/checkout`}>
         <button type="submit" className="btn btn-danger">Checkout</button>
+         </Link>
         </form>
       </div>
     </div>

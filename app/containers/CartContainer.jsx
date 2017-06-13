@@ -34,13 +34,9 @@ class CartContainer extends Component {
     }
 
     handleChange(itemId, quantity) {
-        //get the map from local state (it's at key quantities)
-        //update the key I'm concerned with (itemId)
-        //and then reset it on state at quantiteis
         let cartQuantities = this.state.quantities
         cartQuantities.set(itemId, quantity)
         this.setState({quantities: cartQuantities})
-        this.forceUpdate()
         console.log("handlechange ", this.state)
     }
 
