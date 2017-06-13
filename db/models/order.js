@@ -38,6 +38,9 @@ module.exports = db => db.define('order', {
   },
   ccv: {
     type: Sequelize.INTEGER
+  },
+  status: {
+    type: Sequelize.ENUM('Draft', 'Submitted', 'Completed')
   }
 }, {
   instanceMethods: {
