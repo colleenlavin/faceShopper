@@ -11,7 +11,11 @@ module.exports = require('express').Router()
         .then(faces => res.json(faces))
         .catch(next))
 
-
+  .post('/', 
+    (req, res, next) =>
+    Face.create(req.body)
+    .then(face => res.status(201).json(use))
+    .catch(next))
 
   .get('/:id',
     (req, res, next) =>
