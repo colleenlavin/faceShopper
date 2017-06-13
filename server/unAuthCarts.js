@@ -18,15 +18,15 @@ module.exports = require('express').Router()
 
 })
 
-.param('cartItemId', (req, res, next, cartItemId) => {
-  CartItem.findOrCreate({ where: { id: cartItemId } })
-    .spread((cartItem, created) => {
-      req.cartItem = cartItem
-       next()
-    })
-    .catch(next)
+// .param('cartItemId', (req, res, next, cartItemId) => {
+//   CartItem.findOrCreate({ where: { id: req.params.cartItemId } })
+//     .spread((cartItem, created) => {
+//       req.cartItem = cartItem
+//        next()
+//     })
+//     .catch(next)
   
-})
+// })
 
 .get('/:sessionId',
   (req, res, next) =>
@@ -44,7 +44,7 @@ module.exports = require('express').Router()
     }
   })
     .spread((cartItem, created) => {
-      if (!created) cartItem.increment() // This isn't working right now.  It seems to always create a new one. -KS
+      if (created) cartItem.quantity +=1 // This isn't working right now.  It seems to always create a new one. -KS
       return cartItem
     })
     .then((cartItem) => {

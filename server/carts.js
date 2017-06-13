@@ -25,6 +25,13 @@ module.exports = require('express').Router()
   //   res.json(req.requestedCart)
   //   .catch(next))
 
+<<<<<<< HEAD
+  .post('/:sessionId', 
+    (req, res, next) =>
+    CartItem.create({cart_id: req.requestedCart.id, face_id: req.body.face_id})
+    .then((cartItem)=>res.json(cartItem))
+    .catch(next))
+=======
   // .get('/:sessionId/subtotal', (req, res, next) =>
   //   req.requestedCart
   //   .then(cart => res.json(cartItems.reduce(
@@ -32,6 +39,7 @@ module.exports = require('express').Router()
   //     ))
   //   )
   //  .catch(next))
+>>>>>>> 035f234d9d9d620fbff121f9ade10940c5433688
 
   // .post('/:sessionId',
   //   (req, res, next) =>
