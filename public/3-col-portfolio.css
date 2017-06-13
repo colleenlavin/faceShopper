@@ -1,8 +1,4 @@
-/*!
- * Start Bootstrap - 3 Col Portfolio (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
+
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
@@ -10,12 +6,12 @@ body {
 	font-size: 18px;
 	line-height: 25px;
     margin-left: 20px;
-    background-color: #F1F3CE;
-    color: #1E656D;
+    background-color: #a0eeff;
+    color: #A10115;
 }
 h1 {
   margin: .67em 0;
-  font-size: 3em;
+  font-size: 5em;
   font-family: 'Allan', Helvetica, Arial, sans-serif;
   line-height: 75px;
   margin-left: 20px;
@@ -25,23 +21,23 @@ h1 {
     margin-bottom: 25px;
     margin-left: 20px;
     margin-right: 10px;
-    color: #1E656D;
+    color: #000B29;
 }
 
 footer {
     margin: 50px 0;
 }
 .navbar-inverse {
-  background-color: #00293C;
-  border-color: #080808;
+  background-color: #FF0038;
+  border-color: #a31333;
   color: #1E656D;
 }
 
-/*
-    Note: It is best to use a less version of this file ( see http://css2less.cc
-    For the media queries use @screen-sm-min instead of 768px.
-    For .omb_spanOr use @body-bg instead of white.
-*/
+.btn-danger {
+  color: #fff;
+  background-color: #A10115;
+  border-color: #d43f3a;
+}
 
 @media (min-width: 768px) {
     .omb_row-sm-offset-3 div:first-child[class*="col-"] {
@@ -55,7 +51,7 @@ footer {
 }
 	
 .omb_login .omb_socialButtons a {
-	color: white; // In yourUse @body-bg 
+	color: white;
 	opacity:0.9;
 }
 .omb_login .omb_socialButtons a:hover {
@@ -106,4 +102,8 @@ footer {
         text-align: right;
 		margin-top:10px;
  	}		
+}
+
+.row{
+    background-color: whites;
 }
