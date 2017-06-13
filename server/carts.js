@@ -40,7 +40,7 @@ module.exports = require('express').Router()
 
   .post('/:sessionId', 
     (req, res, next) =>
-    CartItem.create({cartId: req.requestedCart.id, faceId: req.body.faceId, quantity: req.body.quantity, price: req.body.price})
+    CartItem.create({cart_id: req.requestedCart.id, face_id: req.body.face_id})
     .then((cartItem)=>res.json(cartItem))
     .catch(next))
 
