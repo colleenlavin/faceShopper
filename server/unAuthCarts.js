@@ -18,15 +18,15 @@ module.exports = require('express').Router()
 
 })
 
-.param('cartItemId', (req, res, next, cartItemId) => {
-  CartItem.findOrCreate({ where: { id: cartItemId } })
-    .spread((cartItem, created) => {
-      req.cartItem = cartItem
-       next()
-    })
-    .catch(next)
+// .param('cartItemId', (req, res, next, cartItemId) => {
+//   CartItem.findOrCreate({ where: { id: req.params.cartItemId } })
+//     .spread((cartItem, created) => {
+//       req.cartItem = cartItem
+//        next()
+//     })
+//     .catch(next)
   
-})
+// })
 
 .get('/:sessionId',
   (req, res, next) =>
