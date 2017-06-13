@@ -24,8 +24,8 @@ module.exports = db => db.define('cartItem', {
       }
     },
     instanceMethods: {
-      increment() {
-        this.quantity++
+      increment(num) {
+        this.quantity += num
       }
     }
   })
