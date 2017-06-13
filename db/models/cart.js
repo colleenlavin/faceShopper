@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 
 
 module.exports = db => db.define('cart', {
-  sessionId: Sequelize.STRING, //we have to switch to express sessions to make sure we have this
+  sessionId: Sequelize.STRING,
   date: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW
@@ -22,9 +22,9 @@ module.exports = db => db.define('cart', {
           subtotal += item.price * item.quantity
         })
         return subtotal
-      })  
+      })
     }
-  }, 
+  },
   classMethods: {
       getUnAuthCartId: function(sessionId) {
         this.findOne({
@@ -36,7 +36,7 @@ module.exports = db => db.define('cart', {
       },
       getUserCartId: function(userId) {    //Are these really two separate functions?  Could they be DRYd out?
         this.findOne({
-            where: {userId} // does this destructuring syntax work? 
+            where: {userId} // does this destructuring syntax work?
         })
         .then( cart => {
             return cart.id
