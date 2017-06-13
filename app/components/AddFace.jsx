@@ -14,7 +14,8 @@ export default function AddFace({ handleChange, handleSubmit,
             }>
                 <legend>Select a quantity:</legend>
                 <div>
-                    <select
+                    <select 
+                        onChange={(evt) => {handleChange(item, evt.target.value)}}
                         className="form-control"
                         id="quantity"
                         onChange={handleChange}>

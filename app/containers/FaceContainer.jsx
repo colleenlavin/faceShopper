@@ -33,7 +33,6 @@ class FaceContainer extends Component {
     }
 
     handleChange(evt) {
-        console.log("hello", evt.target.value)
         this.setState({  
             selectedQuantity: evt.target.value
         })
