@@ -6,16 +6,11 @@ const Cart = db.model('cart')
 const CartItem = db.model('cartItem')
 
 module.exports = require('express').Router()
-  // .get('/:sessionId', 
+  // .get('/:sessionId',
   //   (req, res, next) =>
   //   Cart.findOrCreate({where: {sessionId: req.params.sessionId})
-  //   //defaults?
-  //     .spread((cart, created) => {
-  //         return cart
-  //       })
-  //     .catch(next))
 
-  .param('sessionId', (req, res, next, sessionId) => 
+  .param('sessionId', (req, res, next, sessionId) =>
     Cart.scope('populated')
     .findOrCreate({where: {sessionId: req.params.sessionId}})
     .spread((cart, created) => cart)
@@ -38,20 +33,20 @@ module.exports = require('express').Router()
     )
    .catch(next))
 
-  .post('/:sessionId', 
+  .post('/:sessionId',
     (req, res, next) =>
     CartItem.create({cartId: req.requestedCart.id, faceId: req.body.faceId, quantity: req.body.quantity, price: req.body.price})
     .then((cartItem)=>res.json(cartItem))
     .catch(next))
 
-  .put('/:sessionId/:faceId/add', (req, res, next) => 
+  .put('/:sessionId/:faceId/add', (req, res, next) =>
       CartItem.findOne({
         where: {
           cartId: req.requestedCart.id,
           faceId: req.params.faceId
         }
       })
-      .then(item => 
+      .then(item =>
         item.update(
           {quantity: item.quantity + 1}
           )
@@ -59,14 +54,14 @@ module.exports = require('express').Router()
       .then((updatedItem) => res.json(updatedItem))
       .catch(next))
 
-    .put('/:sessionId/:faceId/subtract', (req, res, next) => 
+    .put('/:sessionId/:faceId/subtract', (req, res, next) =>
         CartItem.findOne({
           where: {
             cartId: req.requestedCart.id,
             faceId: req.params.faceId
           }
         })
-        .then(item => 
+        .then(item =>
           item.update(
             {quantity: item.quantity - 1}
             )
@@ -84,4 +79,3 @@ module.exports = require('express').Router()
     .then(() => res)
     .catch(next)
     )
-
