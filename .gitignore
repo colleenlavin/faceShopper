@@ -13,3 +13,5 @@ npm-debug.log
 
 # secret keys for Oauth
 secrets.js
+
+.DS_Store
