@@ -10,7 +10,7 @@ body {
 	font-size: 18px;
 	line-height: 25px;
     margin-left: 20px;
-    background-color: #00CFFA;
+    background-color: #a0eeff;
     color: #A10115;
 }
 h1 {
@@ -33,7 +33,7 @@ footer {
 }
 .navbar-inverse {
   background-color: #FF0038;
-  border-color: #080808;
+  border-color: #a31333;
   color: #1E656D;
 }
 

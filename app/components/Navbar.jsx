@@ -8,13 +8,13 @@ export default function Navbar() {
         <nav className="navbar navbar-inverse   navbar-fixed-top topnav " role="navigation">
             <div className="container topnav">
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul className="nav navbar-nav navbar-left">
-                        <li><Link id="home" to="/home">Home</Link></li>
-                        <li><Link id="faces" to="/faces">Faces</Link></li>
-                    </ul>
-                    <ul className="nav navbar-nav navbar-right">
-                        <li><Link id="login" to="/login">Login</Link></li>
-                    </ul>
+                    <div className="nav navbar-nav navbar-left">
+                        <a><Link id="home" to="/home">Home</Link></a>
+                        <a><Link id="faces" to="/faces">Faces</Link></a>
+                    </div>
+                    <div className="nav navbar-nav navbar-right">
+                        <a><Link id="login" to="/login">Login</Link></a>
+                    </div>
                 </div>
             </div>
         </nav>
