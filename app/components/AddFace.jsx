@@ -1,6 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
-
+import { Link } from "react-router";
 export default function AddFace({ handleChange, handleSubmit,
     face, user, sessionId, selectedQuantity }) {
 
@@ -24,7 +24,9 @@ export default function AddFace({ handleChange, handleSubmit,
                         ))}
                     </select>
                 </div>
+                <Link to={`/cart`}>
                 <button type="submit" className="btn btn-danger">Add to Cart</button>
+                </Link>
             </form>
         </div>
     )
