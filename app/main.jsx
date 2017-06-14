@@ -41,8 +41,7 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={FaceApp} onEnter={onAppEnter}>
-        <IndexRedirect to="/home" />
-        <Route path="/home" component={FacesContainer}/>
+        <IndexRedirect to="/faces" />
         <Route path="/faces" component={FacesContainer}/>
         <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
         <Route path="/cart" component={CartContainer}/>
