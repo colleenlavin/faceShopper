@@ -29,16 +29,14 @@ export default function Checkout(handleChange, handleSubmit, data) {
     return (
         <div className="form-container">
             <h1>Checkout</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(evt) => {handleSubmit(evt)}}>
                 {fields.map(field => {
                     <label> {field[0]}
                         <input type="text" id={field[1]} value={data[field[1]]} onChange={handleChange} />
                     </label>
                 })}
-                < Link to={`/confirm`}> {/*Do we want these links? Or do we want redirects in our submit handler?-KS*/}
                     <button type="submit" className="btn btn-danger">
                         Place Order</button>
-                </Link >
             </form>
         </div>
     )

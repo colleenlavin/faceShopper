@@ -39,10 +39,13 @@ class CartContainer extends Component {
     }
 
     handleSubmit(user, sessionId, event) { 
+        console.log("111111111111111")
         event.preventDefault()
+        console.log("this.props.cart ", this.props.cart)
         this.props.cart.forEach(cartItem => {
+            console.log("hello ", cartItem)
             let face = cartItem.face
-            let quantity = cartItem.quantity
+            let quantity = this.state.quantities.get(cartItem.id)
             this.props.postCartItem(user, sessionId, face, quantity)
         })
         console.log("props", this.props)

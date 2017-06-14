@@ -29,9 +29,9 @@ class CheckoutContainer extends Component {
     this.setState({data: data})
   }
 
-  handleSubmit(data, evt) {
+  handleSubmit(evt) {
     evt.preventDefault()
-    postOrder(data)
+    postOrder(this.state.data)
     this.setState({data: {}})
   }
 
