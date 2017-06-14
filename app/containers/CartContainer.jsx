@@ -43,7 +43,7 @@ class CartContainer extends Component {
         this.props.cart.forEach(cartItem => {
             let face = cartItem.face
             let quantity = cartItem.quantity
-            postCartItem(user, sessionId, face, quantity)
+            this.props.postCartItem(user, sessionId, face, quantity)
         })
         console.log("props", this.props)
         this.props.router.push('/checkout')
