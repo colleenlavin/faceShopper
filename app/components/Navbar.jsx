@@ -10,7 +10,7 @@ export default function Navbar({handleClick}) {
             <div className="container topnav">
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav navbar-left">
-                        <li><Link id="home" to="/home">Home</Link></li>
+                        <li><Link id="home" to="/faces">Home</Link></li>
                         <li><Link id="faces" to="/faces">Faces</Link></li>
                         <li><Link id="cart" to="/cart" onClick={handleClick}>Cart</Link></li>
                         <li> <Link id="login" to="/login">Login</Link></li>
