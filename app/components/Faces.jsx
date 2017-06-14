@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-export default function Faces({ faces, handleClick }) {
-	return (
+
+export default function Faces({faces, handleClick, deleteOne}) {
+  return (
 		<div className='main-container'>
 			<div className='title'>
 
@@ -22,6 +23,9 @@ export default function Faces({ faces, handleClick }) {
 							<h3>{face.price}</h3>
 							<button type="button" className="btn btn-danger" value={face.id}
 								onClick={handleClick}>Add to Cart</button>
+							<button type="button" className="btn btn-delete" value={face.id} 
+								onClick={() =>deleteOne(face.id)}>Delete</button>
+
 						</div>
 					))
 				}

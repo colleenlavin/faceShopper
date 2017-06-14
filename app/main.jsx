@@ -21,7 +21,7 @@ import CheckoutContainer from './containers/CheckoutContainer'
 import NewFaceContainer from './containers/NewFaceContainer'
 import {getFaces} from './reducers/faces'
 import {getFace} from './reducers/faces'
-const ExampleApp = connect(
+const FaceApp = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
@@ -40,15 +40,15 @@ const faceId = nextRouterState.params.faceId;
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={FaceApp} onEnter={onAppEnter}>
         <IndexRedirect to="/home" />
-        <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
-        <Route path="/faces" component={FacesContainer} onEnter={onAppEnter} />
+        <Route path="/home" component={FacesContainer}/>
+        <Route path="/faces" component={FacesContainer}/>
         <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
-        <Route path="/cart" component={CartContainer} onEnter={onAppEnter} />
+        <Route path="/cart" component={CartContainer}/>
         <Route path="/checkout" component={CheckoutContainer}/>
          <Route path="/confirm" component={Confirmation}/>
-        <Route path="/login" component={LoginPage} onEnter={onAppEnter} />
+        <Route path="/login" component={LoginPage}/>
         <Route path="/new-face" component={NewFaceContainer} />
       </Route>
       <Route path='*' component={NotFound} />
