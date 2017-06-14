@@ -42,16 +42,15 @@ render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={FaceApp} onEnter={onAppEnter}>
-<<<<<<< HEAD
         <IndexRedirect to="/home" />
         <Route path="/home" component={NoAdminFacesContainer}/>
         <Route path="/faces" component={NoAdminFacesContainer}/>
         <Route path="/admin-faces" component={FacesContainer}/>
         <Route path="/noadminfaces" component={NoAdminFacesContainer}/>
-=======
+
         <IndexRedirect to="/faces" />
         <Route path="/faces" component={FacesContainer}/>
->>>>>>> 01e492618f77e1fe83d9fd1d55128d1397a1bbb3
+
         <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
         <Route path="/cart" component={CartContainer}/>
         <Route path="/checkout" component={CheckoutContainer}/>

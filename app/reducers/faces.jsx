@@ -85,7 +85,7 @@ export const addNewFace = (faceTitle, faceImage, faceDescription, facePrice, fac
     .then(newFace => {
       const newListOfFaces = getState().faces.list.concat([newFace])
       dispatch(receiveFaces(newListOfFaces))
-      browserHistory.push(`/faces`)
+      browserHistory.push(`/admin-faces`)
     })
   }
 }
