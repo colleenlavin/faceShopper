@@ -47,7 +47,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.FACEBOOK_CLIENT_ID,
     clientSecret: env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: `http://localhost:1337/api/auth/login/facebook`,
+    callbackURL: `https://faceshopper.herokuapp.com/api/auth/login/facebook`,
   },
   passport
 })
@@ -60,7 +60,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.GOOGLE_CLIENT_ID,
     clientSecret: env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `http://localhost:1337/api/auth/login/google`,
+    callbackURL: `https://faceshopper.herokuapp.com/api/auth/login/google`,
   },
   passport
 })
@@ -73,7 +73,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.GITHUB_CLIENT_ID,
     clientSecret: env.GITHUB_CLIENT_SECRET,
-    callbackURL: `http://localhost:1337/api/auth/login/github`,
+    callbackURL: `https://faceshopper.herokuapp.com/api/auth/login/github`,
   },
   passport
 })
