@@ -21,7 +21,7 @@ class CheckoutContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
 
     this.state.fields =  [['First Name', 'first'], ['Last Name', 'last'], 
-    ['Address Line 1', 'address1'], ['City', 'city'], ['State', 'state'], 
+    ['Address Line 1', 'address1'], ['Address Line 2', 'address2'], ['City', 'city'], ['State', 'state'], 
     ['Zip Code', 'zip'], ['Credit Card Number', 'ccn'], ['Expiration Date', 'exp'], 
     ['Three Digit Verification Code'], ['cvc']]
   }
@@ -36,7 +36,7 @@ class CheckoutContainer extends Component {
   handleSubmit(data, evt) {
     evt.preventDefault()
     postOrder(data)
-    this.setState({data: data})
+    this.setState({data: {}})
   }
 
   render() {
