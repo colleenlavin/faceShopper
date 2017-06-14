@@ -6,7 +6,7 @@ export default function AddFace({ handleChange, handleSubmit,
 
     const quantityOnHand = face.quantity
     const options = _.range(quantityOnHand + 1)
-
+ 
     return (
         <div className="form-container">
             <form onSubmit={
@@ -14,10 +14,10 @@ export default function AddFace({ handleChange, handleSubmit,
             }>
                 <legend>Select a quantity:</legend>
                 <div>
-                    <select
+                    <select 
+                        onChange={(evt) => {handleChange(item, evt.target.value)}}
                         className="form-control"
                         id="quantity"
-                        value="1"
                         onChange={handleChange}>
                         {options.map(opt => (
                             <option key={opt} value={opt}>{opt}</option>

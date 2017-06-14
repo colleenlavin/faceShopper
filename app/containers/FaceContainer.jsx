@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import AddFace from '../components/AddFace'
 import Face from '../components/Face'
+import EditFaceContainer from '../containers/EditFaceContainer'
 import { postCartItem} from '../reducers/cartItems'
 
 const mapStateToProps = (state) => ({
@@ -11,9 +12,8 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => {
     return {
-        postCartItem: 
+        postCartItem:
         (user, sessionId, face, selectedQuantity) => {
-            console.log("HELLLO")
             dispatch(postCartItem(user, sessionId, face, selectedQuantity))
         }
     }
@@ -41,10 +41,7 @@ class FaceContainer extends Component {
 
     handleSubmit(user, sessionId, face, selectedQuantity, evt) {
         evt.preventDefault()
-        console.log("props ", this.props)
-        this.props.postCartItem(user, sessionId, face, quantity)
-        this.setState({ selectedQuantity: 1 }) 
-        console.log("I'M HERE")
+        this.props.postCartItem(user, sessionId, face, selectedQuantity)
     }
 
     render() {
@@ -52,6 +49,7 @@ class FaceContainer extends Component {
             <div>
                 <Face {...this.state} {...this.props} />
                 <AddFace {...this.state} {...this.props} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+                <EditFaceContainer {...this.state} {...this.props} />
             </div>
         )
     }

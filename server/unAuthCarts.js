@@ -18,15 +18,15 @@ module.exports = require('express').Router()
 
 })
 
-.param('cartItemId', (req, res, next, cartItemId) => {
-  CartItem.findOrCreate({ where: { id: cartItemId } })
-    .spread((cartItem, created) => {
-      req.cartItem = cartItem
-       next()
-    })
-    .catch(next)
+// .param('cartItemId', (req, res, next, cartItemId) => {
+//   CartItem.findOrCreate({ where: { id: req.params.cartItemId } })
+//     .spread((cartItem, created) => {
+//       req.cartItem = cartItem
+//        next()
+//     })
+//     .catch(next)
   
-})
+// })
 
 .get('/:sessionId',
   (req, res, next) =>
@@ -40,15 +40,17 @@ module.exports = require('express').Router()
   CartItem.findOrCreate({
     where: {
       cart_id: req.cart.id,
-      face_id: req.body.face.id
+      face_id: req.body.face.id,
     }
   })
     .spread((cartItem, created) => {
-      if (!created) cartItem.increment() // This isn't working right now.  It seems to always create a new one. -KS
-      return cartItem
+      //if (!created) cartItem.increment(req.body.quantity) // This isn't working right now.  It seems to always create a new one. -KS
+      let newQuant = created? Number(req.body.quantity) : cartItem.quantity + Number(req.body.quantity)
+      cartItem.update({quantity: newQuant, price: req.body.face.price})
+      return [cartItem, created]
     })
-    .then((cartItem) => {
-      res.json(cartItem)
+    .spread((cartItem, created) => {
+      res.json({cartItem:cartItem, created:created})
     })
     .catch(next)
 })
