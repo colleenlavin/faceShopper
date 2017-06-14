@@ -6,6 +6,7 @@ import {browserHistory} from 'react-router'
 const RECEIVE_FACES = 'RECEIVE_FACES'
 const SELECT_FACE = 'SELECT_FACE'
 const DESELECT_FACE = 'DESELECT_FACE'
+const EDIT_FACE = 'EDIT_FACE'
 
 // REDUCER:
 const initialFacesState ={
@@ -29,6 +30,10 @@ const reducer = (state=initialFacesState, action) => {
       newState.selected = action.selectedFace;
       break;
 
+    case EDIT_FACE:
+      newState.selected = action.selectedFace;
+      break;
+
   }
   return newState
 }
@@ -40,6 +45,10 @@ export const receiveFaces = faces => ({
 
 export const selectFace = selectedFace => ({
   type: SELECT_FACE, selectedFace
+})
+
+export const editFace = editFace => ({
+  type: EDIT_FACE, selectedFace
 })
 
 export const deselectFace = () => ({
@@ -59,6 +68,15 @@ export const getFace = id => (
     axios.get(`/api/faces/${id}`)
       .then(face => dispatch(selectFace(face.data)))
    )
+
+export const updateFace = (id, data) => {
+  console.log("DATA???", data)
+  return dispatch =>
+    axios.put(`/api/faces/${id}`, data)
+      .then(face => {
+        dispatch(getFace(face.data.id))
+      })
+   }
 
 export const addNewFace = (faceTitle, faceImage, faceDescription, facePrice, faceQuantity) =>{
   return (dispatch, getState) => {
