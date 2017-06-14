@@ -1,9 +1,8 @@
 import React from 'react'
-import {Link} from 'react-router'
+import { Link } from 'react-router'
+
 
 export default function Faces({faces, handleClick, deleteOne}) {
-
-
   return (
 		<div className='main-container'>
 			<div className='title'>
@@ -18,25 +17,25 @@ export default function Faces({faces, handleClick, deleteOne}) {
 						<div className="col-md-2 face-item" key={face.id}>
 
 							<Link to={`/faces/${face.id}`}>
-								<img className='img-item' src={face.image} />
 								<h3>{face.title}</h3>
+								<img className='img-item' src={face.image} />
 							</Link>
 							<h3>{face.price}</h3>
-							<button type="button" className="btn btn-danger" value={face.id} 
-								onClick={handleClick}>Add to Cart</button>
+							<Link to={`/faces/${face.id}`}><button type="button" className="btn btn-danger" value={face.id}
+								onClick={handleClick}>Add to Cart</button></Link>
 							<button type="button" className="btn btn-delete" value={face.id} 
+
 								onClick={() =>deleteOne(face.id)}>Delete</button>
 
 						</div>
-						))
+					))
 				}
 			</div>
-			<hr />
 			<hr />
 			<Link className='btn btn-success' to='/new-face'>
 				<span className='glyphicon glyphicon-plus' />Add A New Face
 			</Link>
 		</div>
-		)
+	)
 }
 
