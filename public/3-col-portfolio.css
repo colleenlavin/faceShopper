@@ -10,12 +10,12 @@ body {
 	font-size: 18px;
 	line-height: 25px;
     margin-left: 20px;
-    background-color: #a0eeff;
-    color: #A10115;
+    background-color: #F1F3CE;
+    color: #1E656D;
 }
 h1 {
   margin: .67em 0;
-  font-size: 5em;
+  font-size: 3em;
   font-family: 'Allan', Helvetica, Arial, sans-serif;
   line-height: 75px;
   margin-left: 20px;
@@ -25,23 +25,23 @@ h1 {
     margin-bottom: 25px;
     margin-left: 20px;
     margin-right: 10px;
-    color: #000B29;
+    color: #1E656D;
 }
 
 footer {
     margin: 50px 0;
 }
 .navbar-inverse {
-  background-color: #FF0038;
-  border-color: #a31333;
+  background-color: #00293C;
+  border-color: #080808;
   color: #1E656D;
 }
 
-.btn-danger {
-  color: #fff;
-  background-color: #A10115;
-  border-color: #d43f3a;
-}
+/*
+    Note: It is best to use a less version of this file ( see http://css2less.cc
+    For the media queries use @screen-sm-min instead of 768px.
+    For .omb_spanOr use @body-bg instead of white.
+*/
 
 @media (min-width: 768px) {
     .omb_row-sm-offset-3 div:first-child[class*="col-"] {
@@ -53,14 +53,14 @@ footer {
     text-align: center;
 	line-height: 300%;
 }
-	
+
 .omb_login .omb_socialButtons a {
-	color: white;
+	color: white; // In yourUse @body-bg
 	opacity:0.9;
 }
 .omb_login .omb_socialButtons a:hover {
     color: white;
-	opacity:1;    	
+	opacity:1;
 }
 .omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
 .omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
@@ -91,7 +91,7 @@ footer {
 	background-color: white;
 	width: 3em;
 	text-align: center;
-}			
+}
 
 .omb_login .omb_loginForm .input-group.i {
 	width: 2em;
@@ -100,14 +100,21 @@ footer {
     color: red;
 }
 
-	
+
 @media (min-width: 768px) {
     .omb_login .omb_forgotPwd {
         text-align: right;
 		margin-top:10px;
- 	}		
+ 	}
 }
 
-.row{
-    background-color: whites;
+img {
+  width: 200px;
+}
+
+.btn-delete {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  margin-left: 10px
 }
