@@ -21,8 +21,8 @@ export default function Faces({faces, handleClick, deleteOne}) {
 								<img className='img-item' src={face.image} />
 							</Link>
 							<h3>{face.price}</h3>
-							<button type="button" className="btn btn-danger" value={face.id}
-								onClick={handleClick}>Add to Cart</button>
+							<Link to={`/faces/${face.id}`}><button type="button" className="btn btn-danger" value={face.id}
+								onClick={handleClick}>Add to Cart</button></Link>
 							<button type="button" className="btn btn-delete" value={face.id} 
 								onClick={() =>deleteOne(face.id)}>Delete</button>
 
