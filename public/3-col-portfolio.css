@@ -40,7 +40,8 @@ footer {
 .navbar-inverse .btn-link {
    color: #ffe8e8 !important;;
 }
-
+.navbar-inverse .navbar-nav>li>a { color: #ffe8e8 !important; }
+.navbar-inverse .navbar-nav>li>a:hover { color: #A10115 !important; }
 .btn-danger {
   color: #fff;
   background-color: #A10115;
@@ -115,3 +116,13 @@ footer {
 .row{
     background-color: whites;
 }
+img {
+  width: 200px;
+}
+.btn-delete {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  margin-left: 10px
+}
+#edit-face-container { margin-top: 40px }
