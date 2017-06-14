@@ -11,6 +11,7 @@ api
   .use('/users', require('./users'))
   .use('/faces', require('./faces'))
   .use('/carts', require('./unAuthCarts'))
+  .use('/authcarts', require('./authCarts'))
   .use('/orders', require('./orders'))
 
 

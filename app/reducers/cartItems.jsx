@@ -18,7 +18,7 @@ const initialCartState = {
 
 const reducer = (state = initialCartState, action) => {
   const newState = Object.assign({}, state);
-  console.log("action is ", action)
+
   let old; let idx
   switch (action.type) {
 
@@ -76,7 +76,7 @@ export const fetchCart = (user, cartId) => (dispatch) => {
 }
 
 export const postCartItem = (user, sessionId, face, quantity=1) => (dispatch) => {
-    let route = user != '' ? route = '' : route = `/api/carts/${sessionId}` 
+    let route = user != '' ? route = `/api/authcarts/${user.id}` : route = `/api/carts/${sessionId}` 
     axios.post(route, {face, quantity})
       .then(res => res.data)
       .then(data => {
