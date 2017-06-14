@@ -4,6 +4,7 @@ import { postCartItem } from '../reducers/cartItems'
 
 const mapStateToProps = (state) => ({faces: state.faces.list, user: state.auth, 
   sessionId: state.sessionId})
+  
 const mapDispatchToProps = (dispatch) => {
   return {
     handleClick: (evt) => {

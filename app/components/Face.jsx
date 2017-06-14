@@ -14,9 +14,9 @@ export default function Face({face}) {
                 <img className='img-item' src={face.image} />
             </div>
             <div>
-                <span>{face.description}</span>
-                <span>${face.price}</span>
-                <span>{face.quantity}</span>
+                <div>{face.description}</div>
+                <div>${face.price}</div>
+                <div>{face.quantity}</div>
             </div>
         </div>
     )
