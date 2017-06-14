@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Cart from '../components/Cart'
-import { updateCartItem } from '../reducers'
+import { postCartItem } from '../reducers/cartItems'
 import store from '../store'
 
 
@@ -29,23 +29,24 @@ class CartContainer extends Component {
         cart.map(cartItem => {
             this.setState({quantities: cartQuantities})
         })
-        console.log(this.state)
     }
 
     handleChange(itemId, quantity) {
         let cartQuantities = this.state.quantities
         cartQuantities.set(itemId, quantity)
         this.setState({quantities: cartQuantities})
-        console.log("handlechange ", this.state)
+        
     }
 
     handleSubmit(user, sessionId, event) { 
         event.preventDefault()
-        cart.forEach(cartItem => {
+        this.props.cart.forEach(cartItem => {
             let face = cartItem.face
             let quantity = cartItem.quantity
             postCartItem(user, sessionId, face, quantity)
         })
+        console.log("props", this.props)
+        this.props.router.push('/checkout')
     }
 
     render() {

@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 import _ from 'lodash'
 
 
-export default function Checkout({handleChange, handleSubmit, fields}) {
+export default function Checkout(props) {
     /* This function assumes that the props will have the following things available:
             - Payment (an array of objects representing payment info)
                 - each item should have:
@@ -22,8 +22,7 @@ export default function Checkout({handleChange, handleSubmit, fields}) {
             - handleSubmit(for payment info and for address) and handleChange need to be mapped in as well from container for editing quantity
       */
     return (
-        
-        <div className="form-container">
+        <div className="form-container">z
             <h1>Checkout</h1>
             <form onSubmit={handleSubmit}>
             {fields.map(field => {
@@ -31,7 +30,7 @@ export default function Checkout({handleChange, handleSubmit, fields}) {
                     <input type="text" id={field[1]} value={this.state[field[1]]} onChange={handleChange} />
                 </label>  
             })}
-            < Link to={`/confirm`}>
+            < Link to={`/confirm`}> {/*Do we want these links? Or do we want redirects in our submit handler?-KS*/}
                 <button type="submit" className="btn btn-danger">
                     Place Order</button>
             </Link >

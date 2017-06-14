@@ -51,8 +51,9 @@ render(
         <Route path="/home" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces" component={FacesContainer} onEnter={onAppEnter} />
         <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
-        <Route path="/cart" component={CartContainer} onEnter={onAppEnter} />
-        <Route path="/checkout" component={Checkout}/>
+        <Route path="/cart" component={CartContainer} onEnter={onAppEnter}>
+          <Route path="/checkout" component={Checkout}/>
+        </Route>
          <Route path="/confirm" component={Confirmation}/>
         <Route path="/login" component={LoginPage} onEnter={onAppEnter} />
       </Route>
