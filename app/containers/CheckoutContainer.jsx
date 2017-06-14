@@ -28,7 +28,7 @@ class CheckoutContainer extends Component {
   }
 
   handleChange(evt){
-    const value = evt.target.value;
+    let value = evt.target.value;
     let data = this.state.data
     data[evt.target.id] = evt.target.value
     this.setState({data: data})
