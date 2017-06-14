@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-export default function Face({face}) {
+export default function Face({ face }) {
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
     return (
         <div className='main-container'>
@@ -18,6 +21,9 @@ export default function Face({face}) {
                 <span>${face.price}</span>
                 <span>{face.quantity}</span>
             </div>
+
+            <button type="button" className="btn btn-danger" value={face.id}
+                onClick={handleClick}>Add to Cart</button>
         </div>
     )
 }
