@@ -118,7 +118,7 @@ class NewFaceContainer extends Component {
       price = {price}
       quantity = {quantity}
       faces = {faces}
-      formTitle = 'Add Face'
+      formTitle = 'Add Face (Plz do not if yr not an admin?!)'
       />
     )
 }
