@@ -11,7 +11,13 @@ module.exports = require('express').Router()
         .then(faces => res.json(faces))
         .catch(next))
 
-
+  .post('/',
+    (req, res, next) =>
+    {console.log('~~~~~~~~~~~~~hello');
+    Face.create(req.body)
+    .then(face => res.status(201).json(face))
+    .catch(next)
+    })
 
   .get('/:id',
     (req, res, next) =>
@@ -23,14 +29,12 @@ module.exports = require('express').Router()
     (req, res, next) =>
     Face.findById(req.params.id)
     .then(face =>
-      face.update(
-        {quantity: req.body.quantity}
-        ) 
+      face.update(req.body)
+      .then(updatedFace => res.json(updatedFace))
       )
-    .then(updatedFace => res.json(updatedFace))
     .catch(next))
 
-  .delete('/:id', 
+  .delete('/:id',
     (req, res, next) =>
     Face.destroy({
       where: {

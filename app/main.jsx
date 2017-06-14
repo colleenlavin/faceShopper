@@ -18,6 +18,7 @@ import CartContainer from './containers/CartContainer'
 import FaceContainer from './containers/FaceContainer'
 import FacesContainer from './containers/FacesContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
+import NewFaceContainer from './containers/NewFaceContainer'
 import {getFaces} from './reducers/faces'
 import {getFace} from './reducers/faces'
 const ExampleApp = connect(
@@ -48,6 +49,7 @@ render(
         <Route path="/checkout" component={CheckoutContainer}/>
          <Route path="/confirm" component={Confirmation}/>
         <Route path="/login" component={LoginPage} onEnter={onAppEnter} />
+        <Route path="/new-face" component={NewFaceContainer} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

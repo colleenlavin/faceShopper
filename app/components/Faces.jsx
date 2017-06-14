@@ -26,6 +26,11 @@ export default function Faces({faces, handleClick}) {
 						))
 				}
 			</div>
+			<hr />
+			<hr />
+			<Link className='btn btn-success' to='/new-face'>
+				<span className='glyphicon glyphicon-plus' />Add A New Face
+			</Link>
 		</div>
 		)
 }
