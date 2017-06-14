@@ -25,6 +25,7 @@ h1 {
     margin-bottom: 25px;
     margin-left: 20px;
     margin-right: 10px;
+    padding:10px;
     color: #000B29;
 }
 
@@ -34,7 +35,7 @@ footer {
 .navbar-inverse {
   background-color: #FF0038;
   border-color: #a31333;
-  color: #1E656D;
+  color: #ffe8e8;
 }
 
 .btn-danger {
