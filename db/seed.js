@@ -27,7 +27,8 @@ const users = seed(User, {
   barack: {
     name: 'Barack Obama',
     email: 'barack@example.gov',
-    password: '1234'
+    password: '1234',
+    isAdmin: false,
   },
 })
 

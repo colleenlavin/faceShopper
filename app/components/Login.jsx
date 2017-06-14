@@ -6,7 +6,14 @@ export const Login = ({ login, user }) => (
               evt.preventDefault()
               login(evt.target.username.value, evt.target.password.value)
               .then(
-                ()=> {console.log(user);browserHistory.push('/admin-faces')}
+                ()=> {
+                  console.log('~~~~~~~~~~~~', user);
+                  if (user.isAdmin){
+                    browserHistory.push('/admin-faces')
+                  } else {
+                    browserHistory.push('/home')
+                  }
+                }
               )
             }}>
               <input name="username" placeholder='email'/>
