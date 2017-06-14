@@ -5,12 +5,13 @@ import { Link } from "react-router";
 export default function Cart({handleChange, handleSubmit, cart, user, sessionId, quantities}) {
   
     const options = _.range(10)
+    console.log("handle submit ", handleSubmit)
 
   return (
     <div>
       <h1>Your cart:</h1>
       <div id="cart-container">
-        <form onSubmit={(evt) => handleSubmit(user, sessionId, event)}>
+        <form onSubmit={ (event) => {handleSubmit(user, sessionId, event)} }>
         <ul>
           {
             cart.map(item => (
@@ -34,7 +35,7 @@ export default function Cart({handleChange, handleSubmit, cart, user, sessionId,
             ))
           }
         </ul>
-        <button type="submit" className="btn btn-danger" onClick={(event)=>handleSubmit(user, sessionId, event)}>Checkout</button>
+        <button type="submit" className="btn btn-danger" >Checkout</button>
         </form>
       </div>
     </div>
