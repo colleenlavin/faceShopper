@@ -7,6 +7,8 @@ const Face = db.model('face')
 
 module.exports = require('express').Router()
 
+//needs security callback functions implemented 
+
 .param('userId', (req, res, next, userId) => {
   Cart.scope('populated')
     .findOrCreate({ where: { id: req.params.userId } })

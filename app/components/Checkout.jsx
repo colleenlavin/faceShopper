@@ -27,7 +27,7 @@ export default function Checkout(handleChange, handleSubmit, data) {
     ['Zip Code', 'zip'], ['Credit Card Number', 'ccn'], ['Expiration Date', 'exp'],
     ['Three Digit Verification Code'], ['cvc']]
     return (
-        <div className="form-container">z
+        <div className="form-container">
             <h1>Checkout</h1>
             <form onSubmit={handleSubmit}>
                 {fields.map(field => {
