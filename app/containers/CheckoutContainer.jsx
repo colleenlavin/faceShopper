@@ -7,7 +7,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         postOrder: 
         (data) => {
-            dispatch(postCartItem(data))
+            dispatch(postOrder(data))
         }
     }
 }
