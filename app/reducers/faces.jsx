@@ -72,4 +72,32 @@ export const addNewFace = (faceTitle, faceImage, faceDescription, facePrice, fac
   }
 }
 
+export const editFace = (faceQuantity) => {
+  return (dispatch, getState) => {
+    const selectedFace = getState().faces.selected
+    return axios.put(`/api/faces/${selectedFace.id}`, {quantity: faceQuantity})
+    .then(res => res.data)
+    .then(face=>{
+      const faces = getState().faces.list
+      const newListOfFaces = faces.map(fc =>{
+        return fc.id === face.id? face : fc
+      })
+      dispatch(receiveFaces(newListOfFaces))
+      browserHistory.push( `/faces/${fc.id}`)
+    })
+  }
+}
+
+export const deleteFace = (faceId) => {
+  return (dispatch, getState) => {
+    return axios.delete(`/api/faces/${faceId}`)
+      .then(()=> {
+        const faces = getState().faces.list;
+        const newListOfFaces = faces.filter(fc => {return fc.id !== faceId})
+        dispatch(receiveFaces(newListOfFaces))
+        hashHistory.push(`/faces`)
+      })
+  }
+}
+
 export default reducer
