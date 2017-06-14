@@ -25,10 +25,6 @@ class CheckoutContainer extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
 
-    this.state.fields =  [['First Name', 'first'], ['Last Name', 'last'], 
-    ['Address Line 1', 'address1'], ['Address Line 2', 'address2'], ['City', 'city'], ['State', 'state'], 
-    ['Zip Code', 'zip'], ['Credit Card Number', 'ccn'], ['Expiration Date', 'exp'], 
-    ['Three Digit Verification Code'], ['cvc']]
   }
 
   handleChange(evt){
