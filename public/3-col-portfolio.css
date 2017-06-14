@@ -37,6 +37,9 @@ footer {
   border-color: #a31333;
   color: #ffe8e8;
 }
+.navbar-inverse .btn-link {
+   color: #ffe8e8 !important;;
+}
 
 .btn-danger {
   color: #fff;
