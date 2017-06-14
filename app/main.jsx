@@ -17,6 +17,7 @@ import axios from 'axios'
 import CartContainer from './containers/CartContainer'
 import FaceContainer from './containers/FaceContainer'
 import FacesContainer from './containers/FacesContainer'
+import NoAdminFacesContainer from './containers/NoAdminFacesContainer'
 import CheckoutContainer from './containers/CheckoutContainer'
 import NewFaceContainer from './containers/NewFaceContainer'
 import {getFaces} from './reducers/faces'
@@ -42,8 +43,10 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={FaceApp} onEnter={onAppEnter}>
         <IndexRedirect to="/home" />
-        <Route path="/home" component={FacesContainer}/>
-        <Route path="/faces" component={FacesContainer}/>
+        <Route path="/home" component={NoAdminFacesContainer}/>
+        <Route path="/faces" component={NoAdminFacesContainer}/>
+        <Route path="/admin-faces" component={FacesContainer}/>
+        <Route path="/noadminfaces" component={NoAdminFacesContainer}/>
         <Route path="/faces/:faceId" component={FaceContainer} onEnter={onFaceEnter}/>
         <Route path="/cart" component={CartContainer}/>
         <Route path="/checkout" component={CheckoutContainer}/>
