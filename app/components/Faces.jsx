@@ -23,14 +23,13 @@ export default function Faces({faces, handleClick, deleteOne}) {
 							<h3>{face.price}</h3>
 							<button type="button" className="btn btn-danger" value={face.id}
 								onClick={handleClick}>Add to Cart</button>
-							<button type="button" className="btn btn-delete" value={face.id} 
+							<button type="button" className="btn btn-delete" value={face.id}
 								onClick={() =>deleteOne(face.id)}>Delete</button>
 
 						</div>
 					))
 				}
 			</div>
-			<hr />
 			<hr />
 			<Link className='btn btn-success' to='/new-face'>
 				<span className='glyphicon glyphicon-plus' />Add A New Face
