@@ -17,8 +17,8 @@ export default function Cart({handleChange, handleSubmit, cart, user, sessionId,
             cart.map(item => (
               <div key={item.id}>
                 <li>{item.face.title}
-                  <span title="price" className="price">${item.price}</span>
-                  <span title="delete" className="del-button" onClick={() => removeItem(item.id)}>Remove item?</span>
+                  <div title="price" className="price">${item.price}</div>
+                  <div title="delete" className="del-button" onClick={() => removeItem(item.id)}>Remove item?</div>
                   <legend>Select a quantity:</legend>
                   <div>
                     <select

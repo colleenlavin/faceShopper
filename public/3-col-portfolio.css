@@ -25,23 +25,30 @@ h1 {
     margin-bottom: 25px;
     margin-left: 20px;
     margin-right: 10px;
-    color: #1E656D;
+    padding:10px;
+    color: #000B29;
 }
 
 footer {
     margin: 50px 0;
 }
 .navbar-inverse {
-  background-color: #00293C;
-  border-color: #080808;
-  color: #1E656D;
+
+  background-color: #FF0038;
+  border-color: #a31333;
+  color: #ffe8e8;
+}
+.navbar-inverse .btn-link {
+   color: #ffe8e8 !important;;
+}
+.navbar-inverse .navbar-nav>li>a { color: #ffe8e8 !important; }
+.navbar-inverse .navbar-nav>li>a:hover { color: #A10115 !important; }
+.btn-danger {
+  color: #fff;
+  background-color: #A10115;
+  border-color: #d43f3a;
 }
 
-/*
-    Note: It is best to use a less version of this file ( see http://css2less.cc
-    For the media queries use @screen-sm-min instead of 768px.
-    For .omb_spanOr use @body-bg instead of white.
-*/
 
 @media (min-width: 768px) {
     .omb_row-sm-offset-3 div:first-child[class*="col-"] {
@@ -108,6 +115,9 @@ footer {
  	}
 }
 
+.row{
+    background-color: whites;
+}
 img {
   width: 200px;
 }
@@ -118,3 +128,6 @@ img {
   border-color: #d43f3a;
   margin-left: 10px
 }
+
+#edit-face-container { margin-top: 40px }
+
