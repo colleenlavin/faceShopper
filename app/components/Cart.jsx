@@ -10,7 +10,7 @@ export default function Cart({handleChange, handleSubmit, cart, user, sessionId,
     <div>
       <h1>Your cart:</h1>
       <div id="cart-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(evt) => handleSubmit(user, sessionId, event)}>
         <ul>
           {
             cart.map(item => (

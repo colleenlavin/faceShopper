@@ -9,7 +9,7 @@ module.exports = require('express').Router()
 
 .param('userId', (req, res, next, userId) => {
   Cart.scope('populated')
-    .findOrCreate({ where: { userId: req.params.userId } })
+    .findOrCreate({ where: { id: req.params.userId } })
     .spread((cart, created) => {
       req.cart = cart
       next()

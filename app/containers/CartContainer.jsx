@@ -5,7 +5,6 @@ import { updateCartItem } from '../reducers'
 import store from '../store'
 
 
-
 const mapDispatchToProps = (dispatch) => {
     return {
         postCartItem: 
@@ -40,17 +39,18 @@ class CartContainer extends Component {
         console.log("handlechange ", this.state)
     }
 
-    handleSubmit(event) { 
+    handleSubmit(user, sessionId, event) { 
         event.preventDefault()
-        console.log('submitted')
-        //call a dispatcher that creates an order with the current cart
+        cart.forEach(cartItem => {
+            let face = cartItem.face
+            let quantity = cartItem.quantity
+            postCartItem(user, sessionId, face, quantity)
+        })
     }
 
     render() {
-        console.log("this.props ", this.props)
         return (
-            <Cart {...this.state} {...this.props} handleChange={this.handleChange} handleSubmit={this.handleSubmit} 
-                onEnter={this.setCartOnState} />
+            <Cart {...this.state} {...this.props} handleChange={this.handleChange} handleSubmit={this.handleSubmit}  />
         )
     }
 }
