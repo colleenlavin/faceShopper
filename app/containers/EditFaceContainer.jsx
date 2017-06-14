@@ -1,18 +1,18 @@
 import React, {Component} from 'react'
-import NewFace from '../components/NewFace'
+import EditFace from '../components/EditFace'
 import {connect} from 'react-redux'
-import {addNewFace} from '../reducers/faces'
+import {updateFace} from '../reducers/faces'
 
 const mapStateToProps = (state) => {
   return {
-    faces: state.faces.list
+    face: state.faces.selected
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addOne(faceTitle, faceImage, faceDescription, facePrice, faceQuantity){
-      dispatch(addNewFace(faceTitle, faceImage, faceDescription, facePrice, faceQuantity))
+    dispatchEdits(id, data){
+      dispatch(updateFace(id, data))
     }
   }
 }
@@ -20,12 +20,13 @@ const mapDispatchToProps = dispatch => {
 class NewFaceContainer extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       title: '',
       image: '',
-      description:'',
-      price: '',
-      quantity: '',
+      description: '',
+      price: 0,
+      quantity: 0,
       dirty: false
     };
     this.titleHandleChange = this.titleHandleChange.bind(this);
@@ -34,7 +35,18 @@ class NewFaceContainer extends Component {
     this.priceHandleChange = this.priceHandleChange.bind(this);
     this.quantityHandleChange = this.quantityHandleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
   };
+
+  componentWillReceiveProps (newProps, oldProps) {
+        this.setState({
+          title: newProps.face.title,
+          image: newProps.face.image,
+          description: newProps.face.description,
+          price: newProps.face.price,
+          quantity: newProps.face.quantity
+        });
+    }
 
   titleHandleChange(evt) {
     evt.preventDefault();
@@ -84,15 +96,14 @@ class NewFaceContainer extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.addOne(this.state.title, this.state.image, this.state.description, this.state.price, this.state.quantity);
-    this.setState({
-      title: '',
-      image: '',
-      description:'',
-      price: '',
-      quantity: '',
-      dirty: false
-    })
+    let data = {
+      title: this.state.title,
+      image: this.state.image,
+      description: this.state.description,
+      price: this.state.price,
+      quantity: this.state.quantity
+    }
+    this.props.dispatchEdits(this.props.face.id, data);
   }
 
   render () {
@@ -105,7 +116,7 @@ class NewFaceContainer extends Component {
   let faces = this.props.faces;
 
   return (
-    <NewFace
+    <EditFace
       titleHandleChange = {this.titleHandleChange}
       imageHandleChange = {this.imageHandleChange}
       descriptionHandleChange = {this.descriptionHandleChange}
@@ -118,7 +129,7 @@ class NewFaceContainer extends Component {
       price = {price}
       quantity = {quantity}
       faces = {faces}
-      formTitle = 'Add Face (Plz do not if yr not an admin?!)'
+      formTitle = "Edit This Face (don't if yr not an admin!!!!)"
       />
     )
 }

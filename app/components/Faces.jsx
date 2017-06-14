@@ -22,7 +22,6 @@ export default function Faces({faces, handleClick, deleteOne}) {
 								<h3>{face.title}</h3>
 							</Link>
 							<h3>{face.price}</h3>
-							<h4>{face.description}</h4>
 							<button type="button" className="btn btn-danger" value={face.id} 
 								onClick={handleClick}>Add to Cart</button>
 							<button type="button" className="btn btn-delete" value={face.id} 
@@ -40,3 +39,4 @@ export default function Faces({faces, handleClick, deleteOne}) {
 		</div>
 		)
 }
+
